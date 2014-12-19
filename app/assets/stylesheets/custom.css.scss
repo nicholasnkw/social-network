@@ -1,0 +1,42 @@
+@import "reset";
+
+
+//Layout
+.clearfix {
+  overflow: auto;
+  
+}
+*, *:before, *:after {
+  box-style: border-box;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  background: black;
+  li {
+    display: inline-block;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:visited {
+    color: #ffffff
+  }
+  #logo {
+    float:left;
+    color: #ffffff;
+    font-size: 36px;
+  }
+  .signin {
+    float: right;
+  }
+}
+
+//Typographya
+
