@@ -1,4 +1,9 @@
 @import "reset";
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,900,300italic);
+
+
+
+
 
 
 //Layout
@@ -8,6 +13,7 @@
 }
 *, *:before, *:after {
   box-style: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -38,5 +44,40 @@ header {
   }
 }
 
-//Typographya
+
+
+
+//Profile
+
+.profile {
+  padding-top: 25px;
+  p {
+
+  }
+}
+
+
+
+
+
+//Typography
+
+h1 {
+  font-size: 2.0em;
+  font-weight: 300;
+  text-align: center;
+}
+h3{
+    font-size: 1.25em;
+    text-align: center;
+
+}
+
+
+
+
+
+//Users Page
+
+
 

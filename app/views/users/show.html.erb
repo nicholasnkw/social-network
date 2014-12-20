@@ -1,4 +1,7 @@
-<%= @user.email %>
-<%= @profile.first_name %>
-<%= @profile.last_name %>
-<%= @profile.blurb %>
+
+<section class="profile">
+  <h1><%= @profile.first_name %>&nbsp<%= @profile.last_name %></h1>
+  
+  <%= gravatar_for @user %>
+  <h3><%= @profile.blurb %></h3>
+</section>
