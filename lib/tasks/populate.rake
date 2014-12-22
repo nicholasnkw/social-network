@@ -1,7 +1,7 @@
 namespace :db do
   desc "Populate the database"
   task populate: :environment do    
-    [User, Profile].each(&:delete_all)
+    [User, Profile, Friendship].each(&:delete_all)
     make_users
     make_profiles
   end

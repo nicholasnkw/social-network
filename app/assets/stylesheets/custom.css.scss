@@ -1,8 +1,6 @@
 @import "reset";
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,900,300italic);
-
-
-
+@import "bootstrap";
 
 
 
@@ -59,10 +57,29 @@ header {
 .profile {
   text-align: center;
   margin-top: 25px;
+
   p {
 
   }
 }
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+
+
+// Forms
+
+.field, .actions {
+  text-align: center;
+}
+
+
+
 
 
 
@@ -70,15 +87,16 @@ header {
 
 //Typography
 
+h1, h2, h3 {
+  text-align: center;
+}
 h1 {
   font-size: 2.0em;
   font-weight: 300;
-  text-align: center;
 }
+
 h3{
     font-size: 1.25em;
-    text-align: center;
-
 }
 
 

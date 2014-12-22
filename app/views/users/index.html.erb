@@ -8,9 +8,7 @@
         <% elsif current_user.friends.include?(user) %>
           <li>Friend</li>
         <% else %>
-          <%= form_for(current_user.friendship.build(friend_id: user.id, status: "pending")) do |f| %>
-          <%= f.submit "Add Friend" %>
-          <% end %>    
+          <%= link_to "Add Friend", friendships_path(:friend_id => user, :status => "confirmed"), :method => :post %>
         <% end %>
       <% end %>
     <% end %>
