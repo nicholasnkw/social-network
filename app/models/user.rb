@@ -7,12 +7,10 @@ class User < ActiveRecord::Base
   has_one :profile, autosave: true
   accepts_nested_attributes_for :profile
   has_many :posts
-  
+    
+  # order the records here
   has_many :friendships
-  has_many :friends, :through => :friendships, 
-                     :conditions => { "friendships.status" => "accepted"}
-  has_many :pending_friends, :through => :friendships, 
-                             :source => :friend, 
-                             :conditions => {"friendships.status" => "pending"},
-                             :order => :created_at
+  has_many :friends, -> { where("friendships.status" => "accepted")}, :through => :friendships
+  has_many :pending_friends, -> { where("friendships.status" => "pending").order(:created_at)}, :through => :friendships, :source => :friend
+
 end

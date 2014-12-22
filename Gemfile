@@ -23,11 +23,13 @@ end
 
 group :development do
   gem 'guard'
+  gem 'guard-rspec', require: false
 end
 
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'guard-minitest'
 end
 
 group :doc do

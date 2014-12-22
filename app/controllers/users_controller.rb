@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     end
     
     @profile = @user.profile
+    @friends = current_user.friends
     
     @pending_friends = Friendship.where(:friend_id => current_user.id)
     @pending_friends_profiles = []
