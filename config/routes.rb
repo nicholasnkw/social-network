@@ -1,8 +1,10 @@
 SocialNetwork::Application.routes.draw do
 
   devise_for :users, controllers: {registrations: 'users/registrations'}
-  resources :users
-  resources :friendships
+  resources :users do 
+    delete 'friend' => 'friends#destroy'
+    resources :friends
+  end
   root 'users#show'
 
 

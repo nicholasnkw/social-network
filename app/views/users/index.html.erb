@@ -3,12 +3,12 @@
     <% @users.each do |user| %>
       <% unless current_user == user %> 
         <li><%= link_to user.email, user %></li>
-        <% if current_user.pending_friends.include?(user) %>
+    <% if current_user.requested_friends.include?(user) %>
           <li>Pending</li>
         <% elsif current_user.friends.include?(user) %>
           <li>Friend</li>
         <% else %>
-          <%= link_to "Add Friend", friendships_path(:friend_id => user, :status => "confirmed"), :method => :post %>
+    <%= link_to "Add Friend", user_friends_path( :user_id => current_user, :friend_id => user), :action => :create, :method => :post %>
         <% end %>
       <% end %>
     <% end %>

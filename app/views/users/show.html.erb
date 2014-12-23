@@ -10,13 +10,9 @@
     <ul>
       <% if @pending_friends %>
         <% @pending_friends_profiles.each do |p| %>
-      <li><%= p.first_name %>&nbsp<%= p.last_name %></li>
-      <%= link_to "Deny", friendship_path(@pending_friends.find_by(:friend_id => current_user.id, :user_id =>  p.user_id).id), 
-                                          :method => :delete %>
-      <%= link_to "Confirm", friendships_path(:update => @pending_friends.find_by(:friend_id => current_user.id, :user_id =>  p.user_id), 
-                                            :friend_id => p.user_id), :method => :post %>
-        <% end %>
-      
+      <li><%= p.first_name %>&nbsp<%= p.last_name %></li>  
+      <%= link_to "Deny", user_friend_path( :user_id => current_user.id, :friend_id => p.user_id), :method => :delete %>
+        <% end %>   
       <% end %>
     </ul>
   <h2>Friends</h2>

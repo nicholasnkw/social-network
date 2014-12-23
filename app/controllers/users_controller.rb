@@ -14,10 +14,10 @@ class UsersController < ApplicationController
     @profile = @user.profile
     @friends = current_user.friends
     
-    @pending_friends = Friendship.where(:friend_id => current_user.id)
+    @pending_friends = current_user.pending_friends
     @pending_friends_profiles = []
-    @pending_friends.each do |f|
-      @pending_friends_profiles << Profile.find_by(:user_id => f.user_id)
+    @pending_friends.each do |p|
+      @pending_friends_profiles << p.profile
     end
   end
   
