@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     
     @profile = @user.profile
     @friends = current_user.friends
+    @friends_profiles = []
+    @friends.each do |f|
+      @friends_profiles << f.profile
+    end
     
     @pending_friends = current_user.pending_friends
     @pending_friends_profiles = []

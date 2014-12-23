@@ -18,18 +18,21 @@ class FriendsController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
   def update
     @user = User.find(current_user)
-    @friend = User.find(params[:id])
-    params[:friendship] = {user_id => @user.id, :friend_id => @friend.id, :status => 'accepted'}
-    params[:friendship_inverse] = {user_id => @friend.id, :friend_id => user.id, :status => 'accepted'}
-    @friendship = Friendship.find_by(user_id: @user.id, friend_id: @friend.id)
+    @friend = User.find(params[:friend_id])
+    @friendship = Friendship.find_by_user_id_and_friend_id(@user.id, @friend.id)
     @friendship_inverse = Friendship.find_by_user_id_and_friend_id(@friend.id, @user.id)
-    if friendship.update_attributes(params[:friendship]) && friendship.update_attributes(params[:friendship_inverse])
-      flash[:notice] = 'Friend sucessfully accepted!'
-      redirect_to user_path
+    
+    if @friendship.update_attributes(:status => 'accepted') && @friendship_inverse.update_attributes(:status => 'accepted')
+      flash[:success] = 'Friend accepted!'
+      redirect_to user_path(current_user)
     else
-      redirect_to user_path
+      flash[:error] = "Error"
+      redirect_to user_path(current_user)
     end
   end
 

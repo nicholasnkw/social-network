@@ -3,6 +3,7 @@ SocialNetwork::Application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :users do 
     delete 'friend' => 'friends#destroy'
+    put 'friend' => 'friends#update'
     resources :friends
   end
   root 'users#show'
