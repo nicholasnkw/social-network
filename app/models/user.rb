@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   
   has_one :profile, autosave: true
   accepts_nested_attributes_for :profile
-  has_many :posts, dependent: :destroy
+  has_many :posts, :foreign_key => "author_id", :class_name => "Post", dependent: :destroy
     
   # order the records here
   has_many :friendships
