@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   
   has_one :profile, autosave: true
   accepts_nested_attributes_for :profile
-  has_many :posts
+  has_many :posts, dependent: :destroy
     
   # order the records here
   has_many :friendships
