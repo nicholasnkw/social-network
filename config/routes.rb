@@ -5,6 +5,7 @@ SocialNetwork::Application.routes.draw do
     delete 'friend' => 'friends#destroy'
     put 'friend' => 'friends#update'
     resources :friends
+    resource :profiles, only: [:edit, :update]
   end
   root 'users#show'
 

@@ -2,6 +2,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @users_profiles = [];
+    @users.each do |u|
+      @users_profiles << u.profile
+    end
   end
   
   def show  
@@ -9,9 +13,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id]) 
     else 
       @user = current_user
-    end
-    
+    end 
     @profile = @user.profile
+    
     @friends = current_user.friends
     @friends_profiles = []
     @friends.each do |f|

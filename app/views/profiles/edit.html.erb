@@ -1,0 +1,17 @@
+
+  <%= form_for @profile, url: user_profiles_path(@profile) do |p| %>
+  <div class="field">
+    <h3><%= p.label :first_name %></h3>
+    <%= p.text_field :first_name %><br />
+  </div>
+  <div class="field">
+    <h3><%= p.label :last_name %></h3>
+    <%= p.text_field :last_name %><br />
+  </div>
+  <div class="field">
+    <h3><%= p.label :blurb %></h3>
+    <%= p.text_field :blurb %><br />
+
+  <%= p.submit %>
+  </div>
+  <% end %>
