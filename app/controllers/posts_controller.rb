@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   # Put the form right on the profile page.
   def index
-    
+    @posts = Post.where
   end
   def create
     if Post.create(description: params[:post][:description], author_id: current_user.id)
