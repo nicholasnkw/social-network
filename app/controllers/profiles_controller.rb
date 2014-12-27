@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   def edit
-    @profile = Profile.find(params[:user_id])
+    @profile = Profile.find(current_user.profile.id)
   end
   def update
     @profile = Profile.find(params[:user_id])

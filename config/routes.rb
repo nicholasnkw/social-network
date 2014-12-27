@@ -1,13 +1,15 @@
 SocialNetwork::Application.routes.draw do
-
+  
+  root 'users#show'
   devise_for :users, controllers: {registrations: 'users/registrations'}
+  resources :posts
   resources :users do 
     delete 'friend' => 'friends#destroy'
     put 'friend' => 'friends#update'
     resources :friends
-    resource :profiles, only: [:edit, :update]
+    resource :profiles, only: [:edit, :update]  
   end
-  root 'users#show'
+  
 
 
   # Example of regular route:

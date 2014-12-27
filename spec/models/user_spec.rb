@@ -16,4 +16,8 @@ RSpec.describe User, :type => :model do
   
   it { should be_valid}
   
+  describe "friendships"
+  let(:other_user) {FactoryGirl.create(:user)}
+  
+  
 end

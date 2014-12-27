@@ -9,14 +9,16 @@ class UsersController < ApplicationController
   end
   
   def show  
+    @post = Post.new
     if params[:id] 
       @user = User.find(params[:id]) 
     else 
       @user = current_user
     end 
+    @posts = Post.where(author_id: @user)
     @profile = @user.profile
-    
     @friends = current_user.friends
+    
     @friends_profiles = []
     @friends.each do |f|
       @friends_profiles << f.profile

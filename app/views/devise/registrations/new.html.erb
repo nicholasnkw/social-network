@@ -23,7 +23,7 @@
 
   <h2> Profile Info </h2>
 
-  <%= f.fields_for :profile do |profile_form| %>
+<%= f.fields_for :profile do |profile_form| %>
     <div class="field">
         <h3><%= profile_form.label :first_name %></h3>
         <p><%= profile_form.text_field :first_name %></p>

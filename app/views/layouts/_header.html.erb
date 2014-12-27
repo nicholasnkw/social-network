@@ -12,13 +12,13 @@
         </li>
         <div class="dropdown">
         <button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-    expanded="true">
-          Notifications
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <% if @pending_friends_profiles %>  
-          <% @pending_friends_profiles.each do |p| %>
-          <li role="presentation"><b><%= p.first_name %>&nbsp<%= p.last_name %></b><%= link_to "Confirm", user_friend_path( :user_id => current_user, :friend_id => p.user_id), :method => :put, :class => "accept" %><%= link_to "Deny", user_friend_path( :user_id => current_user.id, :friend_id => p.user_id), :method => :delete, :class => "deny" %></li>
+          <% unless @pending_friends_profiles.length == nil %> 
+            <%= "#{"Notifications"}" %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <% @pending_friends_profiles.each do |p| %>
+            <li role="presentation"><b><%= p.first_name %>&nbsp<%= p.last_name %></b><%= link_to "Confirm", user_friend_path( :user_id => current_user, :friend_id => p.user_id), :method => :put, :class => "accept" %><%= link_to "Deny", user_friend_path( :user_id => current_user.id, :friend_id => p.user_id), :method => :delete, :class => "deny" %></li>
 
           <% end %> 
         <% end %>
