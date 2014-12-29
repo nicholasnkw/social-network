@@ -17,6 +17,12 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+# Facebook login
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+# Env variables
+gem 'figaro'
 group :development, :test do
   gem 'rspec-rails'
 end

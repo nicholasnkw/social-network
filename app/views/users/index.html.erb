@@ -1,8 +1,8 @@
 <section class="col-2-3">
   <% @users.each do |u| %>
-  <div class="user-meta-data">
+  <div class="user-outer">
       <% unless current_user == u %> 
-        <%= gravatar_for(u, 30) %><%= link_to "#{u.profile.first_name} #{u.profile.last_name}", user_path(:id => u) %>
+    <%= gravatar_for(u, 30) %> <%= link_to "#{u.profile.first_name} #{u.profile.last_name}", user_path(:id => u) %>
         <% if current_user.requested_friends.include?(u) %>
           <li>Pending</li>
         <% elsif current_user.friends.include?(u) %>

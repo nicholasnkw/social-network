@@ -1,6 +1,6 @@
 SocialNetwork::Application.routes.draw do
-  
-  devise_for :users, controllers: {registrations: 'users/registrations'}
+    post  '/auth/:provider/callback' => 'authentications#create'
+  devise_for :users, controllers: { registrations: 'users/registrations', omniauth_callbacks: "users/omniauth_callbacks" }
 
   root 'users#show'
   

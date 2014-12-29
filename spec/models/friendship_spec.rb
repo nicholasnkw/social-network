@@ -12,12 +12,14 @@ describe Friendship do
   it { should respond_to(:friend) }
   it { should be_valid }
   
+  
+  
+  
   describe "when user id id is not present" do
     before { friendship.user_id = nil}
     it { should_not be_valid}
   end
 
-    
   describe "when friend id is not present" do
     before { friendship.friend_id = nil}
     it { should_not be_valid}

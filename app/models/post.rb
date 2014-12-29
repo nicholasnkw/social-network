@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   has_many :likers, :through => :likes
   
   # comments
-  has_many :comments, dependent: :destroy;
+  has_many :comments, dependent: :destroy
   
   validates :description, presence: true
 end

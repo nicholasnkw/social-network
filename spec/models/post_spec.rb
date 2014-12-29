@@ -6,7 +6,14 @@ RSpec.describe Post, :type => :model do
   subject {post}
   
   it { should respond_to(:description) }
-  it { should respond_to(:author_id) }
+  it { should respond_to(:author) }
+  it { should respond_to(:comments) }
 
+  it { should be_valid }
+  
+  describe "when description is not present" do
+    before { post.description = nil }
+    it { should_not be_valid}
+  end
 
 end

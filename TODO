@@ -1,4 +1,10 @@
+Add OmniAuth
+Set up generating secret key and env variables
+Remove authentication from DB
+User::post is undefined?
+
 FINISH STYLING USER INDEX 
+
 
 Dynamically generate a secret key
 Make url not show query parameters
@@ -9,10 +15,11 @@ HEADER
 
 USERS
   show gravatar on index page
-  Show freiend count.  Like to friends index which is a list of all their friends.
+  Show friend count.  Like to friends index which is a list of all their friends.
+  
 POSTS
   Style user post feed. 
   
 COMMENTS
-  Display comments under post
+  Style new comment view
   
