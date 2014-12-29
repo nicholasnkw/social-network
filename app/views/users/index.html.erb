@@ -1,14 +1,14 @@
 <section class="col-2-3">
-  <ul>
-    <% @users.each do |user| %>
-      <% unless current_user == user %> 
-        <li><%= link_to user.email, user %></li>
-    <% if current_user.requested_friends.include?(user) %>
+  <% @users.each do |u| %>
+  <div class="user-meta-data">
+      <% unless current_user == u %> 
+        <%= gravatar_for(u, 30) %><%= link_to "#{u.profile.first_name} #{u.profile.last_name}", user_path(:id => u) %>
+        <% if current_user.requested_friends.include?(u) %>
           <li>Pending</li>
-        <% elsif current_user.friends.include?(user) %>
+        <% elsif current_user.friends.include?(u) %>
           <li>Friend</li>
         <% else %>
-          <%= link_to "Add Friend", user_friends_path( :user_id => current_user, :friend_id => user), :action => :create, :method => :post %>
+          <%= link_to "Add Friend", user_friends_path( :user_id => current_user, :friend_id => u), :action => :create, :method => :post %>
         <% end %>
       <% end %>
     <% end %>

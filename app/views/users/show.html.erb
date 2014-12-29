@@ -1,7 +1,7 @@
 <section class="col-2-3">
   <div>
   <h1><%= @profile.first_name %>&nbsp<%= @profile.last_name %></h1>
-  <%= gravatar_for @user %>
+  <%= gravatar_for(@user, 120) %>
   <h3><%= @profile.blurb %></h3>
   <% if current_user == @user%>
   <%= link_to "edit profile", edit_user_profiles_path(current_user) %>
@@ -9,7 +9,7 @@
   </div>
   <div>
     <%= form_for(@post) do |f| %>
-    <%= f.text_area :description, size: "60x12" %>
+    <%= f.text_area :description %>
     <%= f.submit "Post" %>
     <% end %>     
   </div>

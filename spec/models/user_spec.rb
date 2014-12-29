@@ -13,6 +13,8 @@ RSpec.describe User, :type => :model do
   it { should respond_to (:friends) }
   it { should respond_to (:pending_friends) }
   it { should respond_to (:requested_friends) }
+  it { should respond_to (:likes?) }
+  it { should respond_to (:posts) }
   
   it { should be_valid}
   

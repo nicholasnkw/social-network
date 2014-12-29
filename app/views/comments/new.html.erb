@@ -1,0 +1,11 @@
+<div class="field">
+<%= form_for @comment do |c| %>
+  <%= c.label :content %>
+  <%= c.text_area :content %>
+  
+  <%= c.hidden_field(:author_id, :value => params[:author_id]) %>
+  <%= c.hidden_field(:post_id, :value => params[:post_id]) %>
+  
+  <%= c.submit %>
+<% end %>
+</div>

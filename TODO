@@ -1,12 +1,18 @@
+FINISH STYLING USER INDEX 
+
 Dynamically generate a secret key
 Make url not show query parameters
+If no blurb is given, generate a smart Faker quote.
 
 HEADER
   make notifications more noticable if there are notifications
 
 USERS
   show gravatar on index page
-  Index posts show all friends posts
+  Show freiend count.  Like to friends index which is a list of all their friends.
 POSTS
-  Style user post feed.  Render as partial for multiple views
-  DEstroy post link for current_user
+  Style user post feed. 
+  
+COMMENTS
+  Display comments under post
+  
