@@ -12,7 +12,7 @@ SocialNetwork::Application.routes.draw do
     delete 'friend' => 'friends#destroy'
     put 'friend' => 'friends#update'
     resources :friends, only: [:create, :destroy]
-    resource :profiles, only: [:edit, :update]  
+    resource :profiles  
   end
   
 end

@@ -21,25 +21,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <h2> Profile Info </h2>
-
-<%= f.fields_for :profile do |profile_form| %>
-    <div class="field">
-        <h3><%= profile_form.label :first_name %></h3>
-        <p><%= profile_form.text_field :first_name %></p>
-    </div>
-    <div class="field">
-        <h3><%= profile_form.label :last_name %></h3>
-        <p><%= profile_form.text_field :last_name %></p>
-    </div>
-    <div class="field">
-        <h3><%= profile_form.label :blurb %></h3>
-        <p><%= profile_form.text_field :blurb %></p>
-    </div>
-  <% end %>
-
   <div class="actions">
     <%= f.submit "Sign up" %>
-<% end %>
-<%= render "devise/shared/links" %>
+    <% end %>
+    <%= render "devise/shared/links" %>
     </div>

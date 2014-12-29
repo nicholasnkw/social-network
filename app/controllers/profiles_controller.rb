@@ -1,4 +1,15 @@
 class ProfilesController < ApplicationController
+  def new
+    @profile = Profile.new
+  end
+  def create
+    @profile = Profile.new(profile_params)
+    if @profile.save
+      redirect_to user_path(current_user)
+    else
+      render new_user_profiles
+    end
+  end
   def edit
     @profile = Profile.find(current_user.profile.id)
   end
@@ -8,14 +19,15 @@ class ProfilesController < ApplicationController
       flash[:success] = "Profile Updated"
       redirect_to current_user
     else
-      flash.now[:error] = "Someting went wrong" 
-      render edit_users_path
+      flash.now[:error] = "Something went wrong" 
+      render edit_user_profiles_path
     end
   end
+  
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :blurb)
+    params.require(:profile).permit(:first_name, :last_name, :blurb, :user_id)
   end
 end
   

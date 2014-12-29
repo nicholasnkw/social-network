@@ -1,4 +1,7 @@
-Add OmniAuth
+Figure out a check to redirect to a create profile page if a new user is just created via omniauth
+
+Change Devise registration flash message
+
 Set up generating secret key and env variables
 Remove authentication from DB
 User::post is undefined?

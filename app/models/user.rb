@@ -39,9 +39,10 @@ class User < ActiveRecord::Base
   # Omniauth Methods
   def self.from_omniauth(auth)
     if user = User.where(:email => auth.info.email).first()
-      user
+       user
     else # Create a user with a stub password. 
       User.create!(:email => auth.info.email, :password => Devise.friendly_token[0,20]) 
+      cookies[:oafb] = true
     end
   end
 
