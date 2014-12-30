@@ -40,9 +40,10 @@ class User < ActiveRecord::Base
   def self.from_omniauth(auth)
     if user = User.where(:email => auth.info.email).first()
        user
-    else # Create a user with a stub password. 
-      User.create!(:email => auth.info.email, :password => Devise.friendly_token[0,20]) 
-      cookies[:oafb] = true
+    else # Create a user with a stub password and a profile
+      u = User.create!(:email => auth.info.email, :password => Devise.friendly_token[0,20])
+      Profile.create!(:user_id => u.id, :first_name => " ", :last_name => " ", :blurb => "Hey you need to update your profile over there to the left")  
+      u
     end
   end
   

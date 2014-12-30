@@ -21,6 +21,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <%= f.fields_for :profile do |profile_form| %>
+    <%= profile_form.hidden_field :first_name, :value => " " %>
+    <%= profile_form.hidden_field :last_name, :value => " " %>
+    <%= profile_form.hidden_field :blurb, :value => " Hey you need to update you profile over there to the left. " %>
+
+    <% end %>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
     <% end %>

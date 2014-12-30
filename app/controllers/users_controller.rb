@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  #Just call profile.all here
   def index
     @users = User.all
     @users_profiles = [];
@@ -30,5 +31,4 @@ class UsersController < ApplicationController
       @pending_friends_profiles << p.profile
     end
   end
-  
 end

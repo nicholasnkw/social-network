@@ -5,31 +5,10 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :redirect
   before_action :pending_friends_profiles
-  around_filter :you_dont_have_bloody_clue
 
   protected
 
-  def you_dont_have_bloody_clue
-    klasses = [ActiveRecord::Base, ActiveRecord::Base.class]
-    methods = ["session", "cookies", "params", "request"]
 
-    methods.each do |shenanigan|
-      oops = instance_variable_get(:"@_#{shenanigan}") 
-
-      klasses.each do |klass|
-        klass.send(:define_method, shenanigan, proc { oops })
-      end
-    end
-
-    yield
-
-    methods.each do |shenanigan|      
-      klasses.each do |klass|
-        klass.send :remove_method, shenanigan
-      end
-    end
-
-  end
   # These are for the header Friend requests notifications
     def pending_friends
       if current_user
