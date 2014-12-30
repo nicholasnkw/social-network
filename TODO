@@ -1,15 +1,14 @@
-Figure out a check to redirect to a create profile page if a new user is just created via omniauth
 
 Change Devise registration flash message
 
-Set up generating secret key and env variables
+Test new and edit profile views for possible partialling
+
 Remove authentication from DB
 User::post is undefined?
 
 FINISH STYLING USER INDEX 
 
 
-Dynamically generate a secret key
 Make url not show query parameters
 If no blurb is given, generate a smart Faker quote.
 

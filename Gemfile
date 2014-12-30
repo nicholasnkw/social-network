@@ -12,29 +12,32 @@ gem 'sass-rails', '~> 4.0.2'
 gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'faker', '1.4.3'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
-# Facebook login
+
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-# Env variables
 gem 'figaro'
+
+
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'rspec-its'
+  gem 'faker', '1.4.3'
 end
 
 group :development do
   gem 'guard'
-  gem 'guard-rspec', require: false
 end
 
 group :test do
+  gem 'guard-rspec' 
+  gem 'launchy'
   gem 'capybara'
-  gem 'factory_girl_rails'
   gem 'guard-minitest'
 end
 

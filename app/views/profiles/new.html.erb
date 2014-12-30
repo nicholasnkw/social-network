@@ -1,18 +1,1 @@
-<%= form_for @profile, url: user_profiles_path(current_user) do |p| %>
-  <div class="field">
-    <h3><%= p.label :first_name %></h3>
-    <%= p.text_field :first_name %><br />
-  </div>
-  <div class="field">
-    <h3><%= p.label :last_name %></h3>
-    <%= p.text_field :last_name %><br />
-  </div>
-  <div class="field">
-    <h3><%= p.label :blurb %></h3>
-    <%= p.text_field :blurb %><br />
-   
-    <%= p.hidden_field :user_id, :value => current_user.id %>
-
-    <%= p.submit %>
-</div>
-<% end %>
+<%= render "form", :profile => @profile %>

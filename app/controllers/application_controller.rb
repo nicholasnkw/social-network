@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     end
 
   end
-
+  # These are for the header Friend requests notifications
     def pending_friends
       if current_user
         @pending_friends = current_user.pending_friends
@@ -45,6 +45,8 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+  
+  # This is to redirect to the previously viewed page
     def redirect
       session[:return_to] ||= request.referer
     end

@@ -13,14 +13,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   #posts
-  has_many :posts, :foreign_key => :author_id, :class_name => :post
+  has_many :posts, :foreign_key => :author_id, dependent: :destroy
   
   #likes
   has_many :likes, :foreign_key => :liker_id
   has_many :liked_things, :through => :likes, :source => :liker, dependent: :destroy
   
   #comments
-  has_many :comments, :foreign_key => :author_id, :class_name => :comment
+  has_many :comments, :foreign_key => :author_id, dependent: :destroy
     
   # order by creation date
   # friends
@@ -45,7 +45,6 @@ class User < ActiveRecord::Base
       cookies[:oafb] = true
     end
   end
-
   
   def self.new_with_session(params, session)
     super.tap do |user|

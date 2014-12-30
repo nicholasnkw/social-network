@@ -53,16 +53,15 @@ header {
     margin-right: 10px;
     margin-left: 10px;
     font-size: 1.7em;
-    color: #fff;
     text-transform: uppercase;
     letter-spacing: -1px;
     padding-top: 12px;
     font-weight: bold;
     line-height: 1;
-  }
-  #logo:hover {
-    color: #fff;
-    text-decoration: none;
+    a:hover {
+       color: #93d400;
+      text-decoration: none;
+    }
   }
   .signin {
     float: right;
