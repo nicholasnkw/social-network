@@ -26,22 +26,20 @@ RSpec.describe User, :type => :model do
   describe "Posts" do
     before do
       @post = Post.create(description: "This is a test post", author: @user)
+      @like = Like.create(liker: @user, liked: @post)
+      
     end
     its(:posts) { should include(@post) }
     
     describe "Liking a post" do
-      before do
-        @like = Like.create(liker: @user, liked: @post,)
-      end
       it { should be_likes(@post)}
-       its(:liked_things) { should include(@post)}
-      describe "Unliking a post" do
-        before do
-          @like.destroy
-        end
-        it { should_not be_likes(@post)}}
+    end
+    describe "Unliking a post" do
+      before do
+        @like.destroy
       end
-    end   
+      it { should_not be_likes(@post)}
+    end 
     describe "commenting a post" do
       before { @comment = Comment.create(content: "This is a test comment", author: @user, post: @post)}
         its(:comments) { should include(@comment)}
