@@ -1,7 +1,7 @@
 <header>
   <div id="logo"><%=link_to "Social-Network", current_user %> </div>
   <nav>
-    <div class="signin">
+    <div class="navigation">
       <% if user_signed_in? %>
       <ul>
         <li>
@@ -13,21 +13,15 @@
         <li>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
         </li>
-        <div class="dropdown">
-        <button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-    expanded="true">
-          <% unless @pending_friends_profiles.length == nil %> 
-            <%= "#{"Notifications"}" %>
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <% @pending_friends_profiles.each do |p| %>
-            <li role="presentation"><b><%= p.first_name %>&nbsp<%= p.last_name %></b><%= link_to "Confirm", user_friend_path( :user_id => current_user, :friend_id => p.user_id), :method => :put, :class => "accept" %><%= link_to "Deny", user_friend_path( :user_id => current_user.id, :friend_id => p.user_id), :method => :delete, :class => "deny" %></li>
-
-          <% end %> 
-        <% end %>
         </ul>
+        <div class="dropdown">
+          <% if @pending_friends.size > 0 %>
+          <%= render  "layouts/notifications" %>
+          <% else %>          
+          <%= render "layouts/notifications_negative" %>
+          <% end %>
+          
         </div>
-      </ul>
       <% end %>
     </div>
   </nav>

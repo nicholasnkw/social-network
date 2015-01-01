@@ -18,7 +18,6 @@ RSpec.describe User, :type => :model do
   it { should respond_to(:likes?) }
   it { should respond_to(:likes)}
   it { should respond_to(:liked_things) }
-  it { should have_many(:servers).dependent(:destroy) }
     
   
   it { should be_valid} 
@@ -26,33 +25,29 @@ RSpec.describe User, :type => :model do
   
   describe "Posts" do
     before do
-      @post = Post.new(description: "This is a test", author: @user)
-      @post.save
+      @post = Post.create(description: "This is a test post", author: @user)
     end
     its(:posts) { should include(@post) }
     
     describe "Liking a post" do
       before do
-        @like = Like.create(liked: @post, liker: @user)
+        @like = Like.create(liker: @user, liked: @post,)
       end
       it { should be_likes(@post)}
+       its(:liked_things) { should include(@post)}
       describe "Unliking a post" do
         before do
           @like.destroy
         end
-        it { should_not be_likes(@post)}
+        it { should_not be_likes(@post)}}
       end
+    end   
+    describe "commenting a post" do
+      before { @comment = Comment.create(content: "This is a test comment", author: @user, post: @post)}
+        its(:comments) { should include(@comment)}
     end
-    
-    describe "Dependent Post gets destroyed" do
-      before do
-        @user.save
-        @user.destroy
-      end
-      
-    end
-    
   end
+  
   
   describe "Relationships" do
 
@@ -68,7 +63,7 @@ RSpec.describe User, :type => :model do
       its(:pending_friends) { should_not include(other_user) }
     end
     
-    describe "Request" do
+    describe "Requests" do
       before {@friendship.update_attributes(status: "requested")}
       its(:requested_friends) { should include(other_user) }
       its(:pending_friends) { should_not include(other_user) }

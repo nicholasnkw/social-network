@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-
+  
+  # make David friends with every new user
+  # after_create :add_david_to_friends
   #Just call profile.all here
   def index
     @users = User.all

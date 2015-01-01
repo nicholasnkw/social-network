@@ -6,12 +6,11 @@
 
 //Layout
 .clearfix {
-  overflow: auto;
-  
+  overflow: auto; 
 }
 *, *:before, *:after {
   box-style: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'proxima nova', sans-serif;
 }
 
 .col-2-3 {
@@ -34,13 +33,13 @@
 
 
 
-
 // Header
 
 header {
   height: 50px;
   width: 100%;
   background: #000000;
+
   li {
     display: inline-block;
   }
@@ -63,8 +62,21 @@ header {
       text-decoration: none;
     }
   }
-  .signin {
-    float: right;
+  .navigation {
+    float: left;
+    margin-left: 25%;
+    //Notifications
+    button {
+      background-color: transparent;
+      border: none;
+      span {
+        font-size: 24px;
+        color: #fff;
+      }
+      .positive {
+        color: #93d400;
+      }   
+    }
   }
 }
 
