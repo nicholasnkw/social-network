@@ -24,8 +24,7 @@
       <% end %>
         
     </div>
-  </div>
-<% p.comments.each do |c| %>
+    <% p.comments.each do |c| %>
   <div class="comment-container">
     <div class="comment-inner">
       <div class="comment-meta-data"><%= gravatar_for(c.author, 30) %><%= link_to "#{c.author.profile.first_name} #{c.author.profile.last_name}", user_path(:id => c.author_id)   %> comments:
@@ -37,4 +36,6 @@
     </div>
   </div>
   <% end %>
+  </div>
+
 <% end %>
