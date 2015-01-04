@@ -27,6 +27,7 @@ wrapper {
 
 [class*="main-content"] {
   text-align: center;
+  
 }
 
 .row {
@@ -49,11 +50,9 @@ header {
   width: 100%;
   background: #000000;
   #logo {
-    margin-top: 12px;
     float: left;
-    margin-right: 10px;
-    margin-left: 10px;
-    font-size: 1.25em;
+    margin: 12px 10px 0 10px;
+    font-size: 1.5em;
     text-transform: uppercase;
     letter-spacing: -1px;
     padding-top: 12px;
@@ -63,36 +62,33 @@ header {
       color: #93d400;
       text-decoration: none;
     }
-  }
+  } 
 
-  ul {
-    text-align: center;
-    font-size: 16px;
-    margin-right: 2%;
+  .dropdown {
+    float: right;
+    margin-right: 10%;
+    button {
+      background-color: transparent;
+      border: none;
+      .bool {
+        font-size: 24px;
+        color: #93d400;
+      }   
+    }
   }
-  li {
-    display: inline-block;
+  
+  .nav {
+    float: right;
+    margin-right: 32.5%;
+    margin-top: 12px;
+    font-size: 1.25em;
+    a{
+      padding: 0 5%;
+    }
   }
   a, a:hover, a:visited {
     text-decoration: none;
     color: #ffffff
-  } 
-  nav{
-    width: 100%;
-    float: right;
-    .dropdown {
-    }
-    button {
-      background-color: transparent;
-      border: none;
-      span {
-        font-size: 24px;
-        color: #fff;
-      }
-      .positive {
-        color: #93d400;
-      }   
-    }
   }
 }
 
@@ -135,7 +131,7 @@ header {
 
 textarea {
     width: 100%;
-    height: 75px;
+    height: 100px;
     font-size: 1.5em;
 }
 textarea:focus {
@@ -180,7 +176,7 @@ textarea:focus {
     .delete {
       position: absolute;
       right: 5px;
-      top: 7px;
+      top: 10px;
       a{
         text-decoration: none;
       }
@@ -188,6 +184,12 @@ textarea:focus {
         font-weight: 800;
         color: red;
       }
+    }
+    h4{
+      
+    }
+    .verb{
+      font-size: 1.25em;
     }
       .post-content, .comment-content {
         font-size: 1.5em;  

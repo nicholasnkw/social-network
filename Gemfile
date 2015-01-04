@@ -2,12 +2,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.8'
-
-# Use postgresql as the database for Active Record
 gem 'pg'
 gem 'devise'
-
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
@@ -32,6 +28,7 @@ end
 
 group :development do
   gem 'guard'
+  gem 'letter_opener'
 end
 
 group :test do

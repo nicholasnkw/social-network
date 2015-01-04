@@ -1,4 +1,4 @@
-<div class="column-main">
+<section class="column-main">
   <div class="column-main-content">
     <h2>Sign up</h2>
     <% resource.build_profile %>
@@ -20,7 +20,7 @@
       <div class="field">
         <%= f.label :password %>
         <% if @validatable %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
       </div>
@@ -31,16 +31,16 @@
       </div>
 
       <%= f.fields_for :profile do |profile_form| %>
-        <%= profile_form.hidden_field :first_name, :value => " " %>
-        <%= profile_form.hidden_field :last_name, :value => " " %>
-        <%= profile_form.hidden_field :blurb, :value => " Hey you need to update you profile over there to the left. " %>
+        <%= profile_form.hidden_field :first_name, :value => "" %>
+        <%= profile_form.hidden_field :last_name, :value => "" %>
+        <%= profile_form.hidden_field :blurb, :value => "" %>
 
-        <% end %>
+       <% end %>
 
       <div class="actions">
         <%= f.submit "Sign up" %>
-        <% end %>
+      <% end %>
         <%= render "devise/shared/links" %>
         </div>
   </div>
-</div>
+</section>

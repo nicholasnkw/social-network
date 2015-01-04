@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
        user
     else # Create a user with a stub password and a profile
       u = User.create!(:email => auth.info.email, :password => Devise.friendly_token[0,20])
-      Profile.create!(:user_id => u.id, :first_name => " ", :last_name => " ", :blurb => "Hey you need to update your profile over there to the left")  
+      Profile.create!(:user_id => u.id, :first_name => auth.info.first_name, :last_name => auth.info.last_name, :blurb => "" )  
       u
     end
   end

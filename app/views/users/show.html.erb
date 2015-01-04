@@ -1,13 +1,16 @@
-<div class="column-main">
+<section class="column-main">
   <div class="column-main-content">
     <h1><%= @profile.first_name %>&nbsp<%= @profile.last_name %></h1>
     <%= gravatar_for(@user, 250) %>
-    <h4>"<%= @profile.blurb %>"</h4>
+    <% if @profile.blurb == "" %>
+        <h4>"<%= Faker::Hacker.say_something_smart %>"</h4>
+    <% else %>
+        <h4>"<%= @profile.blurb %>"</h4>
+    <% end %>
     <% if current_user == @user%>
       <%= link_to "edit profile", edit_user_profiles_path(current_user) %>
     <% end %>
   </div>
-
   <% if current_user == @user%>
      <div class="form-main-content">
        <%= form_for(@post) do |f| %>
@@ -16,10 +19,10 @@
        <% end %>   
     </div>
   <% end %>
-</div>
+</section>
       
 <div class="post-wrapper"> 
-  <% if @posts  %>
+  <% if @posts %>
     <%= render "shared/post", :posts => @posts %>
   <% end %>
 </div>
