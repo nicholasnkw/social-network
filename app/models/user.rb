@@ -33,8 +33,7 @@ class User < ActiveRecord::Base
   def likes?(thing)
     likes.find_by(liked_id: thing.id)
   end
-  
-  
+
   
   # Omniauth Methods
   def self.from_omniauth(auth)
@@ -43,6 +42,7 @@ class User < ActiveRecord::Base
     else # Create a user with a stub password and a profile
       u = User.create!(:email => auth.info.email, :password => Devise.friendly_token[0,20])
       Profile.create!(:user_id => u.id, :first_name => auth.info.first_name, :last_name => auth.info.last_name, :blurb => "" )  
+      UserMailer.welcome_email(u).deliver unless u.invalid?
       u
     end
   end

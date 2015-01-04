@@ -7,11 +7,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.build_profile
     respond_with self.resource
   end
+  def create
+    super
+    UserMailer.welcome_email(resource).deliver
+  end
   
   protected
   
     def configure_permitted_parameters
-
       devise_parameter_sanitizer.for(:sign_up){ |u|
       u.permit(:email,:password, :password_confirmation, :profile_attributes => [:first_name, :last_name, :blurb])
       }
