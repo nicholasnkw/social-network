@@ -1,16 +1,19 @@
-<section class="col-2-3">
-  <% @users.each do |u| %>
-  <div class="user-outer">
-      <% unless current_user == u %> 
-    <%= gravatar_for(u, 30) %> <%= link_to "#{u.profile.first_name} #{u.profile.last_name}", user_path(:id => u) %>
-        <% if current_user.requested_friends.include?(u) %>
-          <li>Pending</li>
-        <% elsif current_user.friends.include?(u) %>
-          <li>Friend</li>
-        <% else %>
-          <%= link_to "Add Friend", user_friends_path( :user_id => current_user, :friend_id => u), :action => :create, :method => :post %>
+<div class="column-main-wrapper">
+  <div class="column-main">
+    <h1>Users</h1>
+    <% @users.each do |u| %>
+    <div class="user-outer">
+        <% unless current_user == u %> 
+          <%= gravatar_for(u, 50) %> <%= link_to "#{u.profile.first_name} #{u.profile.last_name}", user_path(:id => u) %>
+          <% if current_user.requested_friends.include?(u) %>
+            <li>Pending</li>
+          <% elsif current_user.friends.include?(u) %>
+            <li>Friend</li>
+          <% else %>
+            <%= link_to "Add", user_friends_path( :user_id => current_user, :friend_id => u), :action => :create, :method => :post, :class => "btn-post-sm" %>
+          <% end %>
         <% end %>
+    </div>
       <% end %>
-    <% end %>
-  <ul>
-</profile>
+  </div>
+</div>

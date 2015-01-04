@@ -1,41 +1,44 @@
 <% @posts.each do |p| %>
-  <div class="post-container">  
-    <div class="post-inner">
-      <div class="post-meta-data"><%= gravatar_for(p.author, 30) %><%= link_to "#{p.author.profile.first_name} #{p.author.profile.last_name}", user_path(:id => p.author_id)   %> says:
-        <h6><%= p.created_at.strftime("%I:%M%p")%> <%=p.created_at.strftime("%B %d, %Y") %></h6>
+  <div class="post-container clearfix">  
+    <div class="post-inner clearfix">
+      <div class="post-author">
+        <h3><%= link_to "#{p.author.profile.first_name} #{p.author.profile.last_name}", user_path(:id => p.author_id)%></h3>
+        <%= gravatar_for(p.author, 75) %>
+        <span>says:</span>
       </div>
+      <p class="delete">
+        <% if current_user == p.author %>
+        <%= link_to "X", post_path(p.id), :method => :delete,  data: {confirm: "Are you sure?"} %>
+        <% end %>
+      </p>
       <div class="post-content">
         <%= p.description %>
       </div>
-      <div class="tools">
+      <div class="right-tools">
+        <% if p.likes.count > 0 %>
+          <span class="like-count"><%= pluralize(p.likes.count, "like") %></span>
+        <% end %>
         <% if current_user.likes?(p) %>
         <%= link_to "Unlike", like_path(:id => 0, :liked_id => p.id), :method => :delete %>
         <% else %>
-          <%= link_to "like", likes_path(:post_id => p.id), :action => :create, :method => :post %>
+          <%= link_to "Like", likes_path(:post_id => p.id), :action => :create, :method => :post %>
         <% end %>  
-          <%= link_to "comment", new_comment_path(:author_id => current_user.id, :post_id => p.id) %>
-        <% if current_user == p.author %>
-          <%= link_to "delete", post_path(p.id), :method => :delete %>
-          <%= link_to "edit", edit_post_path(p) %>
-        <% end %>
-      </div>  
-      <% if p.likes.count > 0 %>
-      <p> <%= pluralize(p.likes.count, "person") %> like this </p>
-      <% end %>
-        
+        <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :post_id => p.id) %>
+      </div>      
     </div>
-    <% p.comments.each do |c| %>
-  <div class="comment-container">
-    <div class="comment-inner">
-      <div class="comment-meta-data"><%= gravatar_for(c.author, 30) %><%= link_to "#{c.author.profile.first_name} #{c.author.profile.last_name}", user_path(:id => c.author_id)   %> comments:
-        <h6><%= c.created_at.strftime("%I:%M%p")%> <%=c.created_at.strftime("%B %d, %Y") %></h6>
+  </div>
+  <% p.comments.each do |c| %>
+    <div class="comment-container clearfix">
+      <div class="comment-inner clearfix">
+        <div class="comment-author">
+          <h3><%= link_to "#{c.author.profile.first_name} #{c.author.profile.last_name}", user_path(:id => c.author_id) %></h3>
+          <%= gravatar_for(c.author, 75) %>
+          <span>comments:</span>
+        </div>
         <div class="comment-content">
           <%= c.content %>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
-  </div>
-
 <% end %>

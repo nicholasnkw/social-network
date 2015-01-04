@@ -1,7 +1,6 @@
 <header>
   <div id="logo"><%=link_to "Social-Network", current_user %> </div>
   <nav>
-    <div class="navigation">
       <% if user_signed_in? %>
       <ul>
         <li>
@@ -13,16 +12,17 @@
         <li>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
         </li>
-        </ul>
-        <div class="dropdown">
+        <li>
           <% if @pending_friends.size > 0 %>
-          <%= render  "layouts/notifications" %>
+            <%= render  "layouts/notifications" %>
           <% else %>          
-          <%= render "layouts/notifications_negative" %>
+            <%= render "layouts/notifications_negative" %>
           <% end %>
+        </li>
+      </ul>
+      <div class="dropdown">
           
-        </div>
+      </div>
       <% end %>
-    </div>
   </nav>
 </header>
