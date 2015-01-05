@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   has_many :pending_friends, -> { where("friendships.status" => "pending").order(:created_at)}, :through => :friendships, :source => :friend
   has_many :requested_friends, -> { where("friendships.status" => "requested").order(:created_at)}, :through => :friendships, :source=> :friend
   
-  
+
+
   def likes?(thing)
     likes.find_by(liked_id: thing.id)
   end
@@ -41,7 +42,7 @@ class User < ActiveRecord::Base
        user
     else # Create a user with a stub password and a profile
       u = User.create!(:email => auth.info.email, :password => Devise.friendly_token[0,20])
-      Profile.create!(:user_id => u.id, :first_name => auth.info.first_name, :last_name => auth.info.last_name, :blurb => "" )  
+      Profile.create!(:user_id => u.id, :first_name => auth.info.first_name, :last_name => auth.info.last_name, :blurb => Faker::Hacker.say_something_smart )  
       UserMailer.welcome_email(u).deliver unless u.invalid?
       u
     end

@@ -10,6 +10,10 @@
   <div class="field">
     <h3><%= p.label :blurb %></h3>
     <%= p.text_area :blurb, :class => "form-control" %><br />
+  </div>
+  <div class="field">
+   <h3><%= p.label :photo %></h3>
+    <%= p.file_field :photo %>
     <%= p.hidden_field :user_id, :value => current_user.id %>
 
     <%= p.submit %>

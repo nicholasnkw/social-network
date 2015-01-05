@@ -1,12 +1,13 @@
 <section class="column-main">
   <div class="column-main-content">
     <h1><%= @profile.first_name %>&nbsp<%= @profile.last_name %></h1>
-    <%= gravatar_for(@user, 250) %>
-    <% if @profile.blurb == "" %>
-        <h4>"<%= Faker::Hacker.say_something_smart %>"</h4>
+    <% unless @profile.photo.url == "/photos/original/missing.png" %>
+      <%= image_tag @profile.photo.url(:medium) %>
     <% else %>
-        <h4>"<%= @profile.blurb %>"</h4>
+      <%= gravatar_for(@user, 250) %>
     <% end %>
+
+    <h4>"<%= @profile.blurb %>"</h4>
     <% if current_user == @user%>
       <%= link_to "edit profile", edit_user_profiles_path(current_user) %>
     <% end %>
