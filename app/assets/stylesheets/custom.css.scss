@@ -4,6 +4,8 @@
 
 
 //Layout
+
+
 .clearfix {
   overflow: auto; 
 }
@@ -40,10 +42,16 @@ wrapper {
   overflow: hidden;
 }
 
+img {
+  max-width:100%;
+}
+
+
 
 
 
 // Header
+
 
 header {
   height: 75px;
@@ -58,6 +66,7 @@ header {
     padding-top: 12px;
     font-weight: bold;
     line-height: 1;
+    height: 50px;
     a:hover {
       color: #93d400;
       text-decoration: none;
@@ -66,24 +75,26 @@ header {
 
   .dropdown {
     float: right;
-    margin-right: 10%;
+    margin-right: 5%;
+    margin-top: 35px;
+    .notifications {
+      height: 25px;
+      width: 25px;
+      background-color: #93d400;
+      border-radius: 25px;
+    }
     button {
       background-color: transparent;
       border: none;
-      .bool {
-        font-size: 24px;
-        color: #93d400;
-      }   
     }
   }
   
   .nav {
-    float: right;
-    margin-right: 32.5%;
-    margin-top: 12px;
+    text-align: center;
     font-size: 1.25em;
     a{
-      padding: 0 5%;
+      display: block;
+      padding: 0 2%;
     }
   }
   a, a:hover, a:visited {
@@ -96,9 +107,9 @@ header {
 
 
 
-
-
 // Forms  This is holding my button together
+
+
 .field {
   label {
     font-size: 2.5em;
@@ -110,7 +121,6 @@ header {
     font-size: 21px;
     margin-left: auto;
     margin-right: auto;
-
   }
 }
 .form-control {
@@ -120,15 +130,12 @@ header {
   border: 1px solid #93d400;
   box-shadow: 0 0 10px #93d400;
 }
-
 .form-group {
   margin-top: 10px;
 }
-
 .actions {
   margin-top: 10px;
 }
-
 textarea {
     width: 100%;
     height: 100px;
@@ -141,6 +148,13 @@ textarea:focus {
 
 
 
+
+//Friends Sidebar
+
+.sidebar {
+  color: white;
+  display: none;
+}
 
 
 
@@ -301,15 +315,41 @@ h3{
 h4 {
   font-size: 1.25em;
 }
+h5 {
+  font-size: 2.0em;
+  font-weight: 300;
+  
+}
 
 
 h6 {
   margin: 0;
 }
 
+@media only screen and (min-width: 514px) {
+   header {
+    .nav {
+      padding-top: 20px;
+      a{ 
+        font-size: 2.0em;
+        font-weight: 600;
+      display: inline;
+      }
+    }
+  }  
+}
 
 
 @media only screen and (min-width: 960px) {
+  .sidebar{
+    display: block;
+    width: 200px;   
+    height: auto;
+    position: absolute;
+    left: 0;
+    top: 25%;
+    background: black;
+  }
   .post-wrapper {
     [class*="container"] {
       .post-inner, .comment-inner {
@@ -319,14 +359,20 @@ h6 {
       }
       .delete {
       right: 15px;
+      }
     }
   }
-  }  
-  
-  
+
 
     //buttons
   .btn-facebook {
     width: 350px;
     }
+}
+
+@media only screen and (min-width: 1360px) {
+  .sidebar{
+      position: fixed;
+      z-index: 1;
+  }
 }
