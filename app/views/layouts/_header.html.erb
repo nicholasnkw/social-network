@@ -4,9 +4,7 @@
   <% if user_signed_in? %>
   <div class="dropdown">
     <% if @pending_friends.size > 0 %>
-    <%= render  "layouts/notifications" %>
-    <% else %>          
-    <%= render "layouts/notifications_negative" %>
+      <%= render  "layouts/notifications" %>
     <% end %>
   </div>
   <nav class="nav">

@@ -10,8 +10,6 @@ class ApplicationController < ActionController::Base
 
     def pending_friends
       if current_user
-        #This is for css.  Need to declare this in the view somehow
-        @class = "positive"
         @pending_friends = current_user.pending_friends
       end
     end

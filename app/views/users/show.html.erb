@@ -7,8 +7,7 @@
     <% else %>
       <%= gravatar_for(f, 50) %>
     <% end %>
-      <%= f.profile.first_name %>
-      <%= f.profile.last_name %>
+      <link_to "#{<%= f.profile.first_name %>} #{<%= f.profile.last_name %>}", user_path(:id => f.id)
     <% end %>
   </aside>
   <div class="column-main-content">
