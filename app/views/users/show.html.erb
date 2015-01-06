@@ -2,12 +2,14 @@
   <aside class="sidebar">
     <h5>Friends</h5>
     <% @friends.each do |f| %>
-    <% unless f.profile.photo.url == "/photos/original/missing.png" %>
-      <%= image_tag f.profile.photo.url(thumb) %>
-    <% else %>
-      <%= gravatar_for(f, 50) %>
-    <% end %>
-      <link_to "#{<%= f.profile.first_name %>} #{<%= f.profile.last_name %>}", user_path(:id => f.id)
+      <div class="sidebar-content">
+        <% unless f.profile.photo.url == "/photos/original/missing.png" %>
+          <%= image_tag f.profile.photo.url(:thumb) %>
+        <% else %>
+          <%= gravatar_for(f, 50) %>
+        <% end %>
+        <%= link_to "#{f.profile.first_name} #{f.profile.last_name}", user_path(:id => f.id) %>
+      </div>
     <% end %>
   </aside>
   <div class="column-main-content">

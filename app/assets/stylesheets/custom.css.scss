@@ -152,7 +152,6 @@ textarea:focus {
 //Friends Sidebar
 
 .sidebar {
-  color: white;
   display: none;
 }
 
@@ -348,7 +347,13 @@ h6 {
     position: absolute;
     left: 0;
     top: 25%;
-    background: black;
+    border-top: 2px solid #aeaeae;
+    border-bottom: 2px solid #aeaeae;
+    border-right: 2px solid #aeaeae;
+  .sidebar-content {
+    margin: 2%;
+    border-bottom: 1px solid #aeaeae;
+  }
   }
   .post-wrapper {
     [class*="container"] {
