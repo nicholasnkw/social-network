@@ -11,7 +11,11 @@
         <% end %>
       </p>
       <div class="post-content">
-        <%= p.description %>
+        <% unless p.image.url == "/images/original/missing.png" %>
+          <%= image_tag p.image.url(:medium) %>
+        <% else %>
+          <%= p.description %>
+        <% end %>
       </div>
       <div class="right-tools">
         <% if p.likes.count > 0 %>
