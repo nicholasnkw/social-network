@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     end       
   end
   def create
-    if Post.create(description: params[:post][:description], author_id: current_user.id)
+    if Post.create(description: params[:post][:description], image: params[:post][:image], author_id: current_user.id)
       flash[:success] = "Posted"
       redirect_to user_path(current_user)
     else
@@ -45,6 +45,6 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:description)
+    params.require(:post).permit(:description, :image)
   end
 end
