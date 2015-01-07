@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   # Put the form right on the profile page.
   def index
-    @posts = Post.all
+    @posts = Post.order('created_at DESC')
     @feed = []
     @posts.each do |p|
       if p.author == current_user || p.author.friends.include?(current_user)      

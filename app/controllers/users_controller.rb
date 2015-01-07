@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     else 
       @user = current_user
     end 
-    @posts = Post.where(author_id: @user)
+    @posts = Post.where(author_id: @user).order('created_at DESC')
     @profile = @user.profile
     @friends = current_user.friends
   end
