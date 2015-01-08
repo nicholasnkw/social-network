@@ -7,6 +7,7 @@ SocialNetwork::Application.routes.draw do
   resources :posts
   resources :likes, only: [:create, :destroy]
   resources :comments
+  resources :images
   
   resources :users do 
     delete 'friend' => 'friends#destroy'

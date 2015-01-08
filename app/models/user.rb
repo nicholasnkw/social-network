@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   #posts
   has_many :posts, :foreign_key => :author_id, dependent: :destroy
   
+  #post-images
+  has_many :images, :foreign_key => :author_id, dependent: :destroy
+  
   #likes
   has_many :likes, :foreign_key => :liker_id
   has_many :liked_things, :through => :likes, :source => :liker, dependent: :destroy

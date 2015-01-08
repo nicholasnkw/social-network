@@ -30,15 +30,19 @@
        <%= form_for(@post) do |f| %>
          <%= f.text_area :description %>
          <%= f.submit "Post", :class => "btn-post" %>
+       <% end %>  
+       or post and image
+       <%= form_for(@image) do|f| %>
          <%= f.label :image %>
          <%= f.file_field :image %>
-       <% end %>   
+         <%= f.submit "Post Image", :class=> "btn-post" %>
+       <% end %>
     </div>
   <% end %>
 </section>
       
 <div class="post-wrapper"> 
-  <% if @posts %>
-    <%= render "shared/post", :posts => @posts %>
+  <% if @feed %>
+  <%= render "shared/post", :feed => @feed %>
   <% end %>
 </div>
