@@ -1,63 +1,14 @@
-<% feed.each do |p| %>
-  <article class="post-container clearfix">  
-    <div class="post-inner clearfix">
-      <div class="post-author">
-        <h3><%= link_to "#{p.author.profile.first_name} #{p.author.profile.last_name}", user_path(:id => p.author_id)%></h3><span class="verb">says:</span>
-        <%= gravatar_for(p.author, 75) %>
-      </div>
-      <p class="delete">
-        <% if current_user == p.author %>
-        <%= link_to "X", post_path(p.id), :method => :delete,  data: {confirm: "Are you sure?"} %>
-        <% end %>
-      </p>
-      <div class="post-content">
-        <% unless p.image.url == "/images/original/missing.png" %>
-          <%= image_tag p.image.url(:medium) %>
-        <% else %>
-          <%= p.description %>
-        <% end %>
-      </div>
-      <div class="right-tools">
-        <% if p.likes.count > 0 %>
-          <span class="like-count"><%= pluralize(p.likes.count, "like") %></span>
-        <% end %>
-        <% if current_user.likes?(p) %>
-          <%= link_to "Unlike", like_path(:id => 0, :likable_id => p.id), :method => :delete %>
-        <% else %>
-          <% if p.image.url == "/images/original/missing.png" %> 
-            <%= link_to "Like", likes_path(:likeable_id => p.id, :likeable_type => "post"), :action => :create, :method => :post %>
-          <% else %>
-            <%= link_to "Like", likes_path(:likeable_id => p.id, :likeable_type => "image"), :action => :create, :method => :post %>
-          <% end %>
-        <% end %>  
-        <% if p.image.url == "/images/original/missing.png" %>
-          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "post", :commentable_id => p.id) %>    
-        <% else %>
-          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "image", :commentable_id => p.id) %>
-        <% end %>
-      </div>      
-    </div>
-  </article>
-  <% p.comments.each do |c| %>
-    <article class="comment-container clearfix">
-      <div class="comment-inner clearfix">
-        <div class="comment-author">
-          <h3><%= link_to "#{c.author.profile.first_name} #{c.author.profile.last_name}", user_path(:id => c.author_id) %></h3>
-          <%= gravatar_for(c.author, 75) %>
-          <span>comments:</span>
-        </div>
-        <p class="delete">
-        <% if current_user == c.author %>
-          <%= link_to "X", comment_path(c.id), :method => :delete,  data: {confirm: "Are you sure?"} %>
-        <% end %>
-      </p>
-        <div class="comment-content">
-          <%= c.content %>
-        </div>
-        <div class="right-tools">
-          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "comment", :commentable_id => p.id) %>
-        </div>
-      </div>
-    </article>
+<div class="post-content">
+  <%= p.description %>
+</div>
+<div class="right-tools">
+  <% if p.likes.count > 0 %>
+    <span class="like-count"><%= pluralize(p.likes.count, "like") %></span>
   <% end %>
-<% end %>
+  <% if current_user.likes?(p) %>
+    <%= link_to "Unlike", like_path(:id => 0, :likable_id => p.id), :method => :delete %>
+  <% else %>
+    <%= link_to "Like", likes_path(:likeable_id => p.id, :likeable_type => "post"), :action => :create, :method => :post %>
+  <% end %>  
+    <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "post", :commentable_id => p.id) %>    
+</div>    

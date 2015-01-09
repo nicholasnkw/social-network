@@ -1,0 +1,42 @@
+<% feed.each do |f| %>
+  <article class="post-container clearfix">  
+    <div class="post-inner clearfix">
+      <div class="post-author">
+        <h3><%= link_to "#{f.author.profile.first_name} #{f.author.profile.last_name}", user_path(:id => f.author_id)%></h3><span class="verb">says:</span>
+        <%= gravatar_for(f.author, 75) %>
+      </div>
+      <p class="delete">
+        <% if current_user == f.author %>
+          <%= link_to "X", post_path(f.id), :method => :delete,  data: {confirm: "Are you sure?"} %>
+        <% end %>
+      </p>
+      <% if f.image.url == "/images/original/missing.png" %>
+        <%= render "shared/post", :p => f %>
+      <% else %>
+        <%= render "shared/image", :i => f %>
+      <% end %>      
+    </div>
+  </article>
+  <% f.comments.each do |c| %>
+    <article class="comment-container clearfix">
+      <div class="comment-inner clearfix">
+        <div class="comment-author">
+          <h3><%= link_to "#{c.author.profile.first_name} #{c.author.profile.last_name}", user_path(:id => c.author_id) %></h3>
+          <%= gravatar_for(c.author, 75) %>
+          <span>comments:</span>
+        </div>
+        <p class="delete">
+        <% if current_user == c.author %>
+          <%= link_to "X", comment_path(c.id), :method => :delete,  data: {confirm: "Are you sure?"} %>
+        <% end %>
+      </p>
+        <div class="comment-content">
+          <%= c.content %>
+        </div>
+        <div class="right-tools">
+          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "comment", :commentable_id => p.id) %>
+        </div>
+      </div>
+    </article>
+  <% end %>
+<% end %>
