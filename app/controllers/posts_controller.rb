@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      flash.now[:error] = "Post destroyed"
+      flash[:error] = "Post destroyed"
       redirect_to session.delete(:return_to)
     end
   end

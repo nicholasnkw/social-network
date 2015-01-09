@@ -46,6 +46,11 @@
           <%= gravatar_for(c.author, 75) %>
           <span>comments:</span>
         </div>
+        <p class="delete">
+        <% if current_user == c.author %>
+          <%= link_to "X", comment_path(c.id), :method => :delete,  data: {confirm: "Are you sure?"} %>
+        <% end %>
+      </p>
         <div class="comment-content">
           <%= c.content %>
         </div>

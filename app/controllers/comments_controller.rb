@@ -1,19 +1,23 @@
 class CommentsController < ApplicationController
-  before_filter :find_commented
-  
+  before_filter :find_commented, :only => [:create]
   def new
     @comment = Comment.new
   end
   
   def create
-
     if @commented.comments.create(:author_id => current_user.id, :content => params[:comment][:content])
       flash[:success] = "Comment Posted!"
       redirect_to user_path(current_user)
     else
       flash[:error] = "Comment not posted"
       render new_comment
-  
+    end
+  end
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      flash[:error] = "Comment destroyed"
+      redirect_to session.delete(:return_to)
     end
   end
   #perhaps whitelist before this constantize call
