@@ -34,7 +34,7 @@
           <%= c.content %>
         </div>
         <div class="right-tools">
-          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "comment", :commentable_id => p.id) %>
+          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "comment", :commentable_id => c.id) %>
         </div>
       </div>
     </article>

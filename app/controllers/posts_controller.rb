@@ -2,8 +2,10 @@ class PostsController < ApplicationController
   #Do a where and or query here
   def index
     @posts = Post.order('created_at DESC')
+    @images = Image.order('created_at DESC')
+    @combine = (@posts + @images).sort_by(&:created_at)
     @feed = []
-    @posts.each do |p|
+    @combine.each do |p|
       if p.author == current_user || p.author.friends.include?(current_user)      
         @feed << p
       end
