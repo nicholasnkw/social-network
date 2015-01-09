@@ -1,5 +1,4 @@
-class ImagesController < ApplicationController 
-  
+class ImagesController < ApplicationController  
   def create
     @image = Image.new(image: params[:image][:image], author_id: current_user.id)
     if @image.create

@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
-  before_filter :find_commenter
+  before_filter :find_commented
+  
   def new
     @comment = Comment.new
   end
   
   def create
 
-    if @commentable.comments.create(:author_id => current_user.id, :content => params[:comment][:content])
+    if @commented.comments.create(:author_id => current_user.id, :content => params[:comment][:content])
       flash[:success] = "Comment Posted!"
       redirect_to user_path(current_user)
     else
@@ -17,9 +18,9 @@ class CommentsController < ApplicationController
   end
   #perhaps whitelist before this constantize call
   private
-  def find_commenter 
+  def find_commented
     klass = params[:commentable_type].capitalize.constantize
-    @commentable = klass.find(params[:commentable_id])
+    @commented = klass.find(params[:commentable_id])
   end
   def comment_params
     params.require(:comment).permit(:author_id, :content, :commentable_type, :commentable_id) 

@@ -1,13 +1,16 @@
-Add dislike functionality
+comment destroy functionality
 
+Add dislike functionality
+Only can like and comment friends
 Make picture and post have different stylings
+
+Fix likeing boolean
 
 PErhaps have a has threaded comment gem or acts as tree gem for recursive commenting
 Image upload check.
 
 Finish Image and Post likable and comments
 
-Make sure you can comment a photo.
 
 Clean up Post PArtial
 
@@ -17,6 +20,7 @@ Change device flash messages
 Style Facebook Login Option
 
 Style User Index
+Clean up routes
 
 
 Make url not show query parameters

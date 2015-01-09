@@ -1,7 +1,8 @@
 class LikesController < ApplicationController
+  before_filter :find_liked
+  
   def create
-    @like = Like.new(:liker_id => current_user.id, likeable_id: params[:liked_id])   
-    if @like.save
+    if @liked.likes.create(:liker_id => current_user.id)
       flash[:success] = "Liked!"
       redirect_to session.delete(:return_to)
     else
@@ -14,5 +15,11 @@ class LikesController < ApplicationController
     if @like.destroy
       redirect_to session.delete(:return_to)
     end
+  end
+  
+  private
+  def find_liked
+    klass = params[:likeable_type].capitalize.constantize
+    @liked = klass.find(params[:likeable_id])
   end
 end

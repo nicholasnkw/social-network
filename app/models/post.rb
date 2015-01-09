@@ -5,7 +5,6 @@ class Post < ActiveRecord::Base
   
   # likes
   has_many :likes, :as => :likeable
-  has_many :likers, :through => :likes
   
   # comments
   has_many :comments, :as => :commentable, dependent: :destroy

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  # Put the form right on the profile page.
+  #Do a where and or query here
   def index
     @posts = Post.order('created_at DESC')
     @feed = []

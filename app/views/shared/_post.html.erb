@@ -22,9 +22,13 @@
           <span class="like-count"><%= pluralize(p.likes.count, "like") %></span>
         <% end %>
         <% if current_user.likes?(p) %>
-        <%= link_to "Unlike", like_path(:id => 0, :liked_id => p.id), :method => :delete %>
+          <%= link_to "Unlike", like_path(:id => 0, :likable_id => p.id), :method => :delete %>
         <% else %>
-        <%= link_to "Like", likes_path(:likable_id => p.id), :action => :create, :method => :post %>
+          <% if p.image.url == "/images/original/missing.png" %> 
+            <%= link_to "Like", likes_path(:likeable_id => p.id, :likeable_type => "post"), :action => :create, :method => :post %>
+          <% else %>
+            <%= link_to "Like", likes_path(:likeable_id => p.id, :likeable_type => "image"), :action => :create, :method => :post %>
+          <% end %>
         <% end %>  
         <% if p.image.url == "/images/original/missing.png" %>
           <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "post", :commentable_id => p.id) %>    
