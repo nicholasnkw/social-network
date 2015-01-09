@@ -1,4 +1,6 @@
 <section class="post-wrapper">
   <h1>Post Feed</h1>
-  <%= render "shared/post", :posts => @feed, :comments => @comments %>
+  <% if @feed %>
+  <%= render "shared/post", :feed => @feed, :comments => @comments %>
+  <% end %>
 </section>

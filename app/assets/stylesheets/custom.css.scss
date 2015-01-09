@@ -9,6 +9,9 @@
 .clearfix {
   overflow: auto; 
 }
+.clear {
+  clear: both;
+}
 
 *, *:before, *:after {
   box-style: border-box;
@@ -44,6 +47,10 @@ wrapper {
 
 img {
   max-width:100%;
+}
+
+.border-top {
+  border-top: 1px solid #aeaeae;
 }
 
 

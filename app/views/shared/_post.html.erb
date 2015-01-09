@@ -24,9 +24,13 @@
         <% if current_user.likes?(p) %>
         <%= link_to "Unlike", like_path(:id => 0, :liked_id => p.id), :method => :delete %>
         <% else %>
-          <%= link_to "Like", likes_path(:post_id => p.id), :action => :create, :method => :post %>
+        <%= link_to "Like", likes_path(:likable_id => p.id), :action => :create, :method => :post %>
         <% end %>  
-        <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :post_id => p.id) %>
+        <% if p.image.url == "/images/original/missing.png" %>
+          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "post", :commentable_id => p.id) %>    
+        <% else %>
+          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "image", :commentable_id => p.id) %>
+        <% end %>
       </div>      
     </div>
   </article>
@@ -40,6 +44,9 @@
         </div>
         <div class="comment-content">
           <%= c.content %>
+        </div>
+        <div class="right-tools">
+          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "comment", :commentable_id => p.id) %>
         </div>
       </div>
     </article>

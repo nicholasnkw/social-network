@@ -1,20 +1,27 @@
 class CommentsController < ApplicationController
+  before_filter :find_commenter
   def new
     @comment = Comment.new
-    @post = Post.find(params[:post_id])
   end
   
   def create
-    @comment = Comment.new(comment_params)
-    if @comment.save
+
+    if @commentable.comments.create(:author_id => current_user.id, :content => params[:comment][:content])
       flash[:success] = "Comment Posted!"
-      redirect_to session.delete(:return_to)
+      redirect_to user_path(current_user)
+    else
+      flash[:error] = "Comment not posted"
+      render new_comment
+  
     end
   end
-  
+  #perhaps whitelist before this constantize call
   private
-  
+  def find_commenter 
+    klass = params[:commentable_type].capitalize.constantize
+    @commentable = klass.find(params[:commentable_id])
+  end
   def comment_params
-    params.require(:comment).permit(:author_id, :content, :post_id)
+    params.require(:comment).permit(:author_id, :content, :commentable_type, :commentable_id) 
   end
 end

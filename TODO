@@ -1,32 +1,31 @@
 Add dislike functionality
 
-Order the User Index Alphabetically
+Make picture and post have different stylings
 
-Order posts newest first.
+PErhaps have a has threaded comment gem or acts as tree gem for recursive commenting
+Image upload check.
+
+Finish Image and Post likable and comments
+
+Make sure you can comment a photo.
 
 Clean up Post PArtial
 
 Change device flash messages
 
-Refactor Notifications so I'm not using 2 partials
 
 Style Facebook Login Option
-FINISH STYLING USER INDEX 
+
+Style User Index
 
 
 Make url not show query parameters
-If no blurb is given, generate a smart Faker quote.
 
 HEADER
-  make notifications more noticable if there are notifications
 
-USERS
-  show gravatar on index page
-  Show friend count.  Like to friends index which is a list of all their friends.
-  
-POSTS
-  Style user post feed. 
-  
+
 COMMENTS
   Style new comment view
   
+  
+  Specs!!!!!!!

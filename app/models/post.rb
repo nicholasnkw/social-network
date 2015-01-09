@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   belongs_to :author, :class_name => "User"
   
   # likes
-  has_many :likes, :foreign_key => "liked_id"
+  has_many :likes, :as => :likeable
   has_many :likers, :through => :likes
   
   # comments

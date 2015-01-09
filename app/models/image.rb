@@ -3,7 +3,7 @@ class Image < ActiveRecord::Base
   
   has_many :comments, :as => :commentable, dependent: :destroy
   
-   has_many :likes, :foreign_key => "liked_id"
+  has_many :likes, :as => :likeable
   has_many :likers, :through => :likes
   
   has_attached_file :image, :styles => { :medium => "400x400>", :thumb => "50x50>" }

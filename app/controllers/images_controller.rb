@@ -1,7 +1,8 @@
 class ImagesController < ApplicationController 
   
   def create
-    if Image.create(image: params[:image][:image], author_id: current_user.id)
+    @image = Image.new(image: params[:image][:image], author_id: current_user.id)
+    if @image.create
       flash[:success] = "Image posted"
       redirect_to user_path(current_user)
     else

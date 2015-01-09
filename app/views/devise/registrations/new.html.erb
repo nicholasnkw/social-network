@@ -30,21 +30,21 @@
         <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
       </div>
 
-      <h2>Profile</h2>
+    <h2>Profile Info</h2>
       <%= f.fields_for :profile do |p| %>
-        <div class="field">
+        <div class="field clear border-top">
           <%= p.label :first_name %>
-          <%= p.text_field :first_name %>
+          <%= p.text_field :first_name, :class => "form-control" %>
         </div>
 
         <div class="field">
           <%= p.label :last_name %>
-          <%= p.text_field :last_name %>
+          <%= p.text_field :last_name, :class => "form-control" %>
         </div>
 
         <div class="field">
           <%= p.label :blurb %>
-          <%= p.text_area :blurb %>
+          <%= p.text_area :blurb, :class => "form-control" %>
         </div>
         <div class="field">
           <%= p.label :photo %>

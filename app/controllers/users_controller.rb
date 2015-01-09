@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # after_create :add_david_to_friends
   #Just call profile.all here
   def index
-    @users = User.all
+    @users = User.all.sort_by{|user| user.profile.first_name}
   end
   
   def show  

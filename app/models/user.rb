@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
 
   def likes?(thing)
-    likes.find_by(liked_id: thing.id)
+    likes.find_by(likeable_id: thing.id)
   end
 
   

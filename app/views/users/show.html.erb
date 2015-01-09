@@ -29,13 +29,14 @@
      <div class="form-main-content">
        <%= form_for(@post) do |f| %>
          <%= f.text_area :description %>
-         <%= f.submit "Post", :class => "btn-post" %>
+         <%= f.submit "Post Text", :class => "btn-post" %>
        <% end %>  
-       or post and image
+       or
        <%= form_for(@image) do|f| %>
-         <%= f.label :image %>
-         <%= f.file_field :image %>
-         <%= f.submit "Post Image", :class=> "btn-post" %>
+         <div class="field">
+           <%= f.file_field :image %>
+         </div>
+           <%= f.submit "Post Image", :class=> "btn-post" %>
        <% end %>
     </div>
   <% end %>
