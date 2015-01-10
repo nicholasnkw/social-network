@@ -1,16 +1,15 @@
 
-comment destroy functionality
 
 Add dislike functionality
 Only can like and comment friends
 Make picture and post have different stylings
 
-Fix likeing boolean
+
+Header responsive nav to dropdown
 
 PErhaps have a has threaded comment gem or acts as tree gem for recursive commenting
 Image upload check.
 
-Finish Image and Post likable and comments
 
 
 Clean up Post PArtial

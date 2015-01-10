@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_filter :find_liked
+  before_filter :find_liked, :only => [:create]
   
   def create
     if @liked.likes.create(:liker_id => current_user.id)
@@ -11,7 +11,8 @@ class LikesController < ApplicationController
     end
   end
   def destroy
-    @like = current_user.likes.find_by(:likeable_id => params[:liked_id], :likeable_type => params[:likeable_type])
+    
+    @like = Like.where(:likeable_id => params[:likeable_id]).where(:liker_id => current_user).first
     if @like.destroy
       redirect_to session.delete(:return_to)
     end
