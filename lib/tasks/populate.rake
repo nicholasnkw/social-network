@@ -1,9 +1,9 @@
 namespace :db do
   desc "Populate the database"
   task populate: :environment do    
-    [User, Profile, Friendship, Post, Comment, Like].each(&:delete_all)
-    make_users
-    make_profiles
+    [User, Profile, Friendship, Post, Comment, Like, Image].each(&:delete_all)
+    # make_users
+   #  make_profiles
   end
   
   def make_users
@@ -19,7 +19,6 @@ namespace :db do
   end
     
     def make_profiles
-
       10.times do |n|
         user_id = n
         first_name = Faker::Name.first_name

@@ -1,15 +1,8 @@
 class PostsController < ApplicationController
-  #Do a where and or query here
   def index
-    @posts = Post.order('created_at DESC')
-    @images = Image.order('created_at DESC')
-    @combine = (@posts + @images).sort_by(&:created_at)
-    @feed = []
-    @combine.each do |p|
-      if p.author == current_user || p.author.friends.include?(current_user)      
-        @feed << p
-      end
-    end       
+    @posts = Post.where(:author_id => current_user).or(Post.author.friends.include?(current_user))
+    @images = Image.where(:author_id => current_user)
+    @feed = (@posts + @images)     
   end
   def create
     if Post.create(description: params[:post][:description], image: params[:post][:image], author_id: current_user.id)

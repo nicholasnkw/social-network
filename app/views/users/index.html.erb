@@ -1,24 +1,26 @@
 <section class="column-main-wrapper">
   <div class="column-main">
     <h1>Users</h1>
-    <% @users.each do |u| %>
-    <div class="user-outer">
-        <% unless current_user == u %> 
-          <% unless u.profile.photo.url == "/photos/original/missing.png" %>
-            <%= image_tag u.profile.photo.url(:thumb) %>
-          <% else %>
-            <%= gravatar_for(u, 50) %> 
-          <% end %>
-          <%= link_to "#{u.profile.first_name} #{u.profile.last_name}", user_path(:id => u) %>
-            <% if current_user.requested_friends.include?(u) %>
-              <li>Pending</li>
-            <% elsif current_user.friends.include?(u) %>
-              <li>Friend</li>
+    <% if @users %>
+      <% @users.each do |u| %>
+      <div class="user-outer">
+          <% unless current_user == u %> 
+            <% unless u.profile.photo.url == "/photos/original/missing.png" %>
+              <%= image_tag u.profile.photo.url(:thumb) %>
             <% else %>
-              <%= link_to "Add", user_friends_path( :user_id => current_user, :friend_id => u), :action => :create, :method => :post, :class => "btn-post-sm" %>
+              <%= gravatar_for(u, 50) %> 
             <% end %>
-        <% end %>
-    </div>
+            <%= link_to "#{u.profile.first_name} #{u.profile.last_name}", user_path(:id => u) %>
+              <% if current_user.requested_friends.include?(u) %>
+                <li>Pending</li>
+              <% elsif current_user.friends.include?(u) %>
+                <li>Friend</li>
+              <% else %>
+                <%= link_to "Add", user_friends_path( :user_id => current_user, :friend_id => u), :action => :create, :method => :post, :class => "btn-post-sm" %>
+              <% end %>
+          <% end %>
+      </div>
+      <% end %>
     <% end %>
   </div>
 </section>
