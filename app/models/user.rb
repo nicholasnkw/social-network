@@ -32,9 +32,15 @@ class User < ActiveRecord::Base
   has_many :requested_friends, -> { where("friendships.status" => "requested").order(:created_at)}, :through => :friendships, :source=> :friend
   
 
-
+  
   def likes?(thing)
     Like.find_by(likeable_id: thing.id)
+  end
+  
+  def feed
+    @posts = Post.where("author_id in (?) OR author_id = ?", friend_ids, self).includes(:likes, author: [:profile], comments: [author: [:profile]])
+    @images = Post.where("author_id in (?) OR author_id = ?", friend_ids, self).includes(:likes, author: [:profile], comments: [author: [:profile]])
+    @feed = (@posts + @images).sort_by(&:created_at).uniq
   end
 
   

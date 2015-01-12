@@ -1,14 +1,11 @@
 class PostsController < ApplicationController
   def index
-    #need to eager load author and profile info here
-    @friends = current_user.friend_ids
-    @posts = Post.where("author_id in (?) OR author_id = ?", @friends, current_user).includes(:likes, author: [:profile], comments: [author: [:profile]])
-    @images = Post.where("author_id in (?) OR author_id = ?", @friends, current_user).includes(:likes, author: [:profile], comments: [author: [:profile]])
-    @feed = (@posts + @images).sort_by(&:created_at).uniq
+    @feed = current_user.feed
   end
   
   def create
-    if Post.create(description: params[:post][:description], image: params[:post][:image], author_id: current_user.id)
+    @post = current_user.posts.build(post_params)
+    if @post.save
       flash[:success] = "Posted"
       redirect_to user_path(current_user)
     else
