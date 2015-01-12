@@ -13,7 +13,7 @@
     <% end %>
   </aside>
   <div class="column-main-content">
-    <h1><%= @user.profile.first_name %>&nbsp<%= @profile.last_name %></h1>
+    <h1><%= @user.profile.first_name %>&nbsp<%= @user.profile.last_name %></h1>
     <% unless @user.profile.photo.url == "/photos/original/missing.png" %>
     <%= image_tag @user.profile.photo.url(:medium) %>
     <% else %>

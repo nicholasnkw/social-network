@@ -15,11 +15,10 @@ class UsersController < ApplicationController
       # .includes(:profile)
     else 
       @user = current_user
-    end 
-    @profile = @user.profile
-    @posts = Post.where(author_id: @user)
-    @images = Image.where(author_id: @user)
-    @feed = (@posts + @images).sort_by(&:created_at)
+    end
+    @posts = Post.where(author_id: @user).includes(:likes, author: [:profile], comments: [author: [:profile]])
+    @images = Image.where(author_id: @user).includes(:likes, author: [:profile], comments: [author: [:profile]])
+    @feed = (@posts + @images).sort_by(&:created_at).uniq
     @friends = current_user.friends.includes(:profile)
   end
 end
