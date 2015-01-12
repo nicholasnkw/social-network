@@ -1,14 +1,16 @@
 <div class="post-content">
   <%= image_tag i.image.url(:medium) %>
 </div>
-<div class="right-tools">
-  <% if i.likes.count > 0 %>
-    <span class="like-count"><%= pluralize(i.likes.count, "like") %></span>
-  <% end %>
-  <% if current_user.likes?(i) %>
-    <%= link_to "Unlike", like_path(:id => 0, :likeable_id => i.id), :method => :delete %>
-  <% else %>
-    <%= link_to "Like", likes_path(:likeable_id => i.id, :likeable_type => "image"), :action => :create, :method => :post %>
-  <% end %>  
-    <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "image", :commentable_id => i.id) %>    
-</div>    
+<% if current_user == @user || current_user.friends.include?(@user) %>
+  <div class="right-tools">
+    <% if i.likes.count > 0 %>
+      <span class="like-count"><%= pluralize(i.likes.count, "like") %></span>
+    <% end %>
+    <% if current_user.likes?(i) %>
+      <%= link_to "Unlike", like_path(:id => 0, :likeable_id => i.id), :method => :delete %>
+    <% else %>
+      <%= link_to "Like", likes_path(:likeable_id => i.id, :likeable_type => "image"), :action => :create, :method => :post %>
+    <% end %>  
+      <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "image", :commentable_id => i.id) %>    
+  </div>    
+<% end %>
