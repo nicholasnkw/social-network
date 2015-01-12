@@ -4,10 +4,10 @@ SocialNetwork::Application.routes.draw do
 
   root 'users#show'
   
-  resources :posts
+  resources :posts, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
-  resources :comments
-  resources :images
+  resources :comments, only: [:new, :create, :destroy]
+  resources :images, only: [:create, :destroy]
   
   resources :users do 
     delete 'friend' => 'friends#destroy'

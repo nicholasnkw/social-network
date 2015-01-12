@@ -11,8 +11,14 @@
         <% end %>
       </p>
       <% if f.image.url == "/images/original/missing.png" %>
+        <% if current_user == f.author %>
+          <%= render "shared/delete", :path => method(:post_path), :f => f %>
+        <% end %>  
         <%= render "shared/post", :p => f %>
       <% else %>
+        <% if current_user == f.author %>
+          <%= render "shared/delete", :path => method(:image_path), :f => f %>
+        <% end %> 
         <%= render "shared/image", :i => f %>
       <% end %>      
     </div>
