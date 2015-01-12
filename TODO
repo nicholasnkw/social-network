@@ -1,4 +1,5 @@
-
+Populate posts and images
+go through controllers and fix n + 1 queries, pluck
 
 Add dislike functionality
 Only can like and comment friends

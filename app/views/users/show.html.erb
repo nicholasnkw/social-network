@@ -13,14 +13,14 @@
     <% end %>
   </aside>
   <div class="column-main-content">
-    <h1><%= @profile.first_name %>&nbsp<%= @profile.last_name %></h1>
-    <% unless @profile.photo.url == "/photos/original/missing.png" %>
-      <%= image_tag @profile.photo.url(:medium) %>
+    <h1><%= @user.profile.first_name %>&nbsp<%= @profile.last_name %></h1>
+    <% unless @user.profile.photo.url == "/photos/original/missing.png" %>
+    <%= image_tag @user.profile.photo.url(:medium) %>
     <% else %>
       <%= gravatar_for(@user, 250) %>
     <% end %>
 
-    <h4>"<%= @profile.blurb %>"</h4>
+    <h4>"<%= @user.profile.blurb %>"</h4>
     <% if current_user == @user%>
       <%= link_to "edit profile", edit_user_profiles_path(current_user) %>
     <% end %>

@@ -1,11 +1,10 @@
-My Friends:
-<% unless @user == current_user %>
-  You do not have permission to access this page!
-<% else %>
-  Current Friends:
-  <%= render :partial => 'friends/friends' %>
-  Requested Friends:
-  <%= render :partial => 'friends/requested_friends' %>
-  Pending Friends:
-  <%= render :partial => 'friends/pending_friends' %>
+<% @friends.each do |f| %>
+  <div class="sidebar-content">
+    <% unless f.profile.photo.url == "/photos/original/missing.png" %>
+      <%= image_tag f.profile.photo.url(:thumb) %>
+    <% else %>
+      <%= gravatar_for(f, 50) %>
+    <% end %>
+    <%= link_to "#{f.profile.first_name} #{f.profile.last_name}", user_path(:id => f.id) %>
+  </div>
 <% end %>

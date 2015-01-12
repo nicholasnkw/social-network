@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
     def pending_friends
       if current_user
-        @pending_friends = current_user.pending_friends
+        @pending_friends = current_user.pending_friends.includes(:profile)
       end
     end
   
