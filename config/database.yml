@@ -40,7 +40,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: social-network_production
+  database: d7e6a8v82mg0m7
   pool: 5
-  username: social-network
+  host: ec2-54-225-255-208.compute-1.amazonaws.com
+  username: sdvhqameuwjhrx
   password: qOwCIKcwb435shaFrMJMsYwxor
