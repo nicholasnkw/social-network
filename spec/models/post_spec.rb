@@ -8,7 +8,7 @@ RSpec.describe Post, :type => :model do
   it { should respond_to(:description) }
   it { should respond_to(:author) }
   it { should respond_to(:comments) }
-  it { should resond_to(:likes)}
+  it { should respond_to(:likes)}
 
   it { should be_valid }
   
@@ -18,7 +18,10 @@ RSpec.describe Post, :type => :model do
   end
 
   describe "Comments" do
-    before { @comment = Comment.create(content: "This is a test comment", post: post)}
+    before do 
+      @comment = post.comments.build(content: "This is a test comment")
+      @comment.save
+    end
       its(:comments) { should include(@comment)}
   end
 end

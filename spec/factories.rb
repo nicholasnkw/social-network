@@ -1,5 +1,5 @@
-FactoryGirl.define do  factory :image do
-    
+FactoryGirl.define do  
+  factory :image do   
   end
 
   factory :user do

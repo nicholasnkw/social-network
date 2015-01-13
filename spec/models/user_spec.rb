@@ -17,7 +17,6 @@ RSpec.describe User, :type => :model do
   it { should respond_to(:comments) }  
   it { should respond_to(:likes?) }
   it { should respond_to(:likes)}
-  it { should respond_to(:liked_things) }
     
   
   it { should be_valid} 
@@ -26,7 +25,7 @@ RSpec.describe User, :type => :model do
   describe "Posts" do
     before do
       @post = Post.create(description: "This is a test post", author: @user)
-      @like = Like.create(liker: @user, liked: @post)
+      @like = Like.create(liker: @user, likeable_id: @post, likeable_type: "post")
       
     end
     its(:posts) { should include(@post) }
@@ -41,7 +40,7 @@ RSpec.describe User, :type => :model do
       it { should_not be_likes(@post)}
     end 
     describe "commenting a post" do
-      before { @comment = Comment.create(content: "This is a test comment", author: @user, post: @post)}
+      before { @comment = Comment.create(content: "This is a test comment", author: @user, commentable_id: @post, commentable_type: "post")}
         its(:comments) { should include(@comment)}
     end
   end

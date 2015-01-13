@@ -5,21 +5,16 @@
         <h3><%= link_to "#{f.author.profile.first_name} #{f.author.profile.last_name}", user_path(:id => f.author_id)%></h3><span class="verb">says:</span>
         <%= gravatar_for(f.author, 75) %>
       </div>
-      <p class="delete">
-        <% if current_user == f.author %>
-          <%= link_to "X", post_path(f.id), :method => :delete,  data: {confirm: "Are you sure?"} %>
-        <% end %>
-      </p>
-      <% if f.image.url == "/images/original/missing.png" %>
-        <% if current_user == f.author %>
-          <%= render "shared/delete", :path => method(:post_path), :f => f %>
-        <% end %>  
-        <%= render "shared/post", :p => f %>
-      <% else %>
+      <% if f.respond_to? :image%>
         <% if current_user == f.author %>
           <%= render "shared/delete", :path => method(:image_path), :f => f %>
         <% end %> 
         <%= render "shared/image", :i => f %>
+      <% else %>
+      <% if current_user == f.author %>
+          <%= render "shared/delete", :path => method(:post_path), :f => f %>
+        <% end %>  
+        <%= render "shared/post", :p => f %>
       <% end %>      
     </div>
   </article>
