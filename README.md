@@ -1,3 +1,1 @@
-Final Rails Project:  Social-Network
-
-http://www.theodinproject.com/ruby-on-rails/final-project
+A profesional grade social network built from scratch.
