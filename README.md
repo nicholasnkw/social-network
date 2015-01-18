@@ -1,1 +1,1 @@
-A profesional grade social network built from scratch.
+Unit and integration tests in Rspec.
