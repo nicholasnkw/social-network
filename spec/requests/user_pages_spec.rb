@@ -29,6 +29,14 @@ describe "User pages" do
       it { should have_css('div.right-tools') }
       it { should have_link('Comment') }
       it { should have_link('Like') }
+      
+      describe "post creation" do
+        describe "with invalid information" do
+          it "should not create a post" do
+            expect { click_button "Post Text"}.not_to change(Post, "count")
+          end
+        end
+      end
         
       describe "liking a post" do
         before do
@@ -43,6 +51,10 @@ describe "User pages" do
         end
       end
       describe "Commenting a post" do
+        before do 
+          @comment = p1.comments.build(content: "This is a test")
+        end
+        
       end
     end   
   end

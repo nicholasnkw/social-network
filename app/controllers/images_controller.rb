@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController  
   
   def create
-    @image = Image.new(image: params[:image][:image], author_id: current_user.id)
+    @image = current_user.images.build(image_params)
     if @image.save
       flash[:success] = "Image posted"
       redirect_to user_path(current_user)
@@ -18,4 +18,10 @@ class ImagesController < ApplicationController
       redirect_to session.delete(:return_to)
     end
   end
+  
+  private
+  
+    def image_params
+      params.require(:image).permit(:image)
+    end
 end
