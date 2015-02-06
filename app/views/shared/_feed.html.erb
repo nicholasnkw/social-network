@@ -3,7 +3,11 @@
     <div class="post-inner clearfix">
       <div class="post-author">
         <h3><%= link_to "#{f.author.profile.first_name} #{f.author.profile.last_name}", user_path(:id => f.author_id)%></h3><span class="verb">says:</span>
-        <%= gravatar_for(f.author, 75) %>
+        <% unless f.author.profile.photo.url == "/photos/original/missing.png" %>
+          <%= image_tag f.author.profile.photo.url(:thumb) %>
+        <% else %>
+          <%= gravatar_for(f.author, 75) %>
+        <% end %>
       </div>
       <% if f.respond_to? :image%>
         <% if current_user == f.author %>
@@ -12,9 +16,9 @@
         <%= render "shared/image", :i => f %>
       <% else %>
       <% if current_user == f.author %>
-          <%= render "shared/delete", :path => method(:post_path), :f => f %>
-        <% end %>  
-        <%= render "shared/post", :p => f %>
+      <%= render "shared/delete", :path => method(:post_path), :f => f %>
+      <% end %>  
+      <%= render "shared/post", :p => f %>
       <% end %>      
     </div>
   </article>
