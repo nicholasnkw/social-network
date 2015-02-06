@@ -12,8 +12,8 @@
         <%= render "shared/image", :i => f %>
       <% else %>
       <% if current_user == f.author %>
-          <%= render "shared/delete", :path => method(:post_path), :f => f %>
-        <% end %>  
+        <%= render "shared/delete", :path => method(:post_path), :f => f %>
+      <% end %>  
         <%= render "shared/post", :p => f %>
       <% end %>      
     </div>

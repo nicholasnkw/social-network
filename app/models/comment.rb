@@ -4,5 +4,5 @@ class Comment < ActiveRecord::Base
   has_many :comments, :as => :commentable
   has_many :likes, :as => :likeable
   
-  validates :content, presence: true
+  validates :content, length: { minimum: 2 }
 end

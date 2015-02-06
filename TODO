@@ -1,5 +1,7 @@
 Destroy Friendships
 
+Render form errors the same as sample app.  
+
 
 Populate posts and images
 go through controllers and fix n + 1 queries, pluck

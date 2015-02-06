@@ -1,14 +1,15 @@
 <div class="column-main">
   <div class="column-main-content">
     <h1> Comment for:</h1>
-    <%= form_for @comment, :url => comments_path(:commentable_type => params[:commentable_type], :commentable_id => params[:commentable_id], :author_id => current_user.id) do |c| %>
+    <%= form_for @comment, :url => comments_path(:commentable_type => params[:commentable_type], :commentable_id => params[:commentable_id], :author_id => current_user.id) do |f| %>
+    <%= render 'shared/error_messages', f: @comment %>
       <div class="field">
-        <%= c.text_area :content, :size => "50x2" %>
+        <%= f.text_area :content, :size => "50x2" %>
       </div>
 
      
       <div>
-        <%= c.submit %>
+        <%= f.submit %>
       </div>
       <% end %>
   </div>

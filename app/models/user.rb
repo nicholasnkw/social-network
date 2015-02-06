@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
   #comments
   has_many :comments, :foreign_key => :author_id, dependent: :destroy
     
-  # order by creation date
   # friends
   has_many :friendships
   has_many :friends, -> { where("friendships.status" => "accepted")}, :through => :friendships
@@ -45,6 +44,7 @@ class User < ActiveRecord::Base
 
   
   # Omniauth Methods
+  
   def self.from_omniauth(auth)
     if user = User.where(:email => auth.info.email).first()
        user

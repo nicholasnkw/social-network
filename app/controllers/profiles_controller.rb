@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   def new
     @profile = Profile.new
   end
+  
   def create
     @profile = Profile.new(profile_params)
     if @profile.save
@@ -10,12 +11,14 @@ class ProfilesController < ApplicationController
       render new_user_profiles
     end
   end
+  
   def edit
     @profile = Profile.find(current_user.profile.id)
   end
+  
   def update
     @profile = Profile.find(current_user.profile.id)
-    if @profile.update(profile_params)
+    if @profile.update_attributes(profile_params)
       flash[:success] = "Profile Updated"
       redirect_to current_user
     else

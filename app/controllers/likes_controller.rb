@@ -10,8 +10,8 @@ class LikesController < ApplicationController
       redirect_to session.delete(:return_to)
     end
   end
-  def destroy
-    
+  
+  def destroy 
     @like = Like.where(:likeable_id => params[:likeable_id]).where(:liker_id => current_user).first
     if @like.destroy
       redirect_to session.delete(:return_to)

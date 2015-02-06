@@ -25,6 +25,7 @@ class FriendsController < ApplicationController
     @friendship_inverse = Friendship.find_by_user_id_and_friend_id(@friend.id, @user.id)
     
     if @friendship.update_attributes(:status => 'accepted') && @friendship_inverse.update_attributes(:status => 'accepted')
+      # Can I just redirect to current user here?
       flash[:success] = 'Friend accepted!'
       redirect_to user_path(@user)
     else

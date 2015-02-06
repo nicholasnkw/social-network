@@ -28,11 +28,13 @@
   <% if current_user == @user%>
      <div class="form-main-content">
        <%= form_for(@post) do |f| %>
+         <%= render 'shared/error_messages', f: @post %>
          <%= f.text_area :description %>
          <%= f.submit "Post Text", :class => "btn-post" %>
        <% end %>  
        or
        <%= form_for(@image) do|f| %>
+         <%= render 'shared/error_messages', f: @image %>
          <div class="field">
            <%= f.file_field :image %>
          </div>
@@ -44,6 +46,6 @@
       
 <div class="post-wrapper"> 
   <% if @feed %>
-  <%= render "shared/feed", :feed => @feed %>
+    <%= render "shared/feed", :feed => @feed %>
   <% end %>
 </div>

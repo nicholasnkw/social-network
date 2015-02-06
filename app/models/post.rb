@@ -9,5 +9,5 @@ class Post < ActiveRecord::Base
   # comments
   has_many :comments, :as => :commentable, dependent: :destroy
   
-  validates :description, :length { minimum: 2}
+  validates :description, length: { minimum: 2}
 end

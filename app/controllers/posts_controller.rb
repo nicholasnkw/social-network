@@ -8,10 +8,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Posted"
-      redirect_to user_path(current_user)
+      redirect_to current_user
     else
       flash.now[:error] = "Post failed"
-      render user_path(current_user)
+      render current_user
     end
   end
   

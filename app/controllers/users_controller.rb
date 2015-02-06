@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   
   # make David friends with every new user
   # after_create :add_david_to_friends
-  #Just call profile.all here
   def index
     @users = User.includes(:profile)
   end
@@ -21,4 +20,5 @@ class UsersController < ApplicationController
     @feed = (@posts + @images).sort_by(&:created_at).uniq
     @friends = current_user.friends.includes(:profile)
   end
+  
 end

@@ -10,9 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap
-//= require jquery
-//= require bootstrap-sprockets
-//= require jquery_ujs
+//= require BigVideo.js/lib/bigvideo.js
+//= require eventEmitter/EventEmitter.min.js
+//= require eventie/eventie.js
+//= require jquery/dist/jquery.min.js
+//= require jquery-ui/jquery-ui.min.js
+//= require video.js/Gruntfile.js
 //= require turbolinks
 //= require_tree .
