@@ -7,10 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.build_profile
     respond_with self.resource
   end
-  def create
-    super
-    UserMailer.welcome_email(resource).deliver
-  end
+
   
   protected
   
