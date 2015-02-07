@@ -15,17 +15,11 @@
         <% end %> 
         <%= render "shared/image", :i => f %>
       <% else %>
-      <% if current_user == f.author %>
-<<<<<<< HEAD
-        <%= render "shared/delete", :path => method(:post_path), :f => f %>
-      <% end %>  
+        <% if current_user == f.author %>
+          <%= render "shared/delete", :path => method(:post_path), :f => f %>
+        <% end %>  
         <%= render "shared/post", :p => f %>
-=======
-      <%= render "shared/delete", :path => method(:post_path), :f => f %>
-      <% end %>  
-      <%= render "shared/post", :p => f %>
->>>>>>> posts
-      <% end %>      
+      <% end %>    
     </div>
   </article>
   <% f.comments.each do |c| %>
