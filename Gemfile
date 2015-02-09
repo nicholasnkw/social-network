@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'paperclip'
+gem 'newrelic_rpm'
 
 gem "bower-rails", "~> 0.9.1"
 gem 'omniauth'
