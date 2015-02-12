@@ -1,22 +1,22 @@
-Fix User Index PAge
+USers index does not work on heroku
+
+
+
+
 Image post check.
 
-Destroy Friendships
 
 Render form errors the same as sample app.  
 
 
 Populate posts and images
-go through controllers and fix n + 1 queries, pluck
 
 Add dislike functionality
 Make picture and post have different stylings
 
 
-Header responsive nav to dropdown
 
 PErhaps have a has threaded comment gem or acts as tree gem for recursive commenting
-Image upload check.
 
 
 Add caption capability to the images

@@ -8,7 +8,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.build_profile
     respond_with self.resource
   end
-
+  def create
+    super
+    UserMailer.welcome_email(resource).deliver
+  end
   
   protected
   
@@ -20,9 +23,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       
       def add_friends
         @user = resource
-        @friend = User.find_by(email: "davidjanczyn@gmail.com")
-        @friendship = Friendship.create(:user_id => @friend.id, :friend_id => @user.id, :status => 'accepted')
-        @inverse_friendship = Friendship.create(:user_id => @user.id, :friend_id => @friend.id, :status => 'accepted')
+        unless @user.email = "davidjanczyn@gmail.com"
+          @friend = User.find_by(email: "davidjanczyn@gmail.com")
+          @friendship = Friendship.create(:user_id => @friend.id, :friend_id => @user.id, :status => 'accepted')
+          @inverse_friendship = Friendship.create(:user_id => @user.id, :friend_id => @friend.id, :status => 'accepted')
+        end
   
       end
 end
