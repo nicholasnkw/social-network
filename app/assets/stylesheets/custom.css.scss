@@ -1,6 +1,7 @@
 @import "reset";
 @import "bootstrap";
 
+$light-blue: #00E0FF;
 
 //Layout
 
@@ -330,14 +331,14 @@ textarea:focus {
 }
 
 .btn-sign-up{
-  background: #00E0FF;
-  border-color: #00E0FF;
+  background: $light-blue;
+  border-color: $light-blue;
   border-radius: 0;
   width: 100px;
 }
 .btn-sign-up:hover {
-  background: #00E0FF;
-  border-color: #00E0FF;
+  background: $light-blue;
+  border-color: $light-blue;
   color: #93d400;
 }
 .btn-post {
@@ -345,7 +346,7 @@ textarea:focus {
   display: block;
   width: 150px;
   height: 50px;
-  background: #00E0FF;
+  background: $light-blue;
   border: none;
   font-size: 1.5em;
   color: white; 
@@ -353,7 +354,7 @@ textarea:focus {
 .btn-post-sm {
   width: 50px;
   height: 25px;
-  background: #00E0FF;
+  background: $light-blue;
   border: none;
   color: white; 
 }
@@ -405,6 +406,9 @@ h4 {
 h5 {
   font-size: 2.0em;
   font-weight: 300;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 2px solid #aeaeae;
   
 }
 
@@ -435,10 +439,17 @@ h6 {
     border-top: 2px solid #aeaeae;
     border-bottom: 2px solid #aeaeae;
     border-right: 2px solid #aeaeae;
-  .sidebar-content {
-    margin: 2%;
-    border-bottom: 1px solid #aeaeae;
-  }
+    .sidebar-content {
+      margin: 2%;
+      border-bottom: 1px solid #aeaeae;
+      a {
+        color: #000;
+        font-weight: 500;
+          &:hover {
+            text-decoration: none;
+            }
+      }
+    }
   }
   .post-wrapper {
     [class*="container"] {

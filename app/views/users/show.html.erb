@@ -1,21 +1,11 @@
 <section class="column-main">
-  <aside class="sidebar">
-    <h5>Friends</h5>
-    <% @friends.each do |f| %>
-      <div class="sidebar-content">
-        <% unless f.profile.photo.url == "/photos/original/missing.png" %>
-        <%= image_tag f.profile.photo.url(:thumb) %>
-        <% else %>
-          <%= gravatar_for(f, 50) %>
-        <% end %>
-        <%= link_to "#{f.profile.first_name} #{f.profile.last_name}", user_path(:id => f.id) %>
-      </div>
-    <% end %>
-  </aside>
+  <% if current_user == @user %>
+    <%= render 'friends', friends: @friends %>
+  <% end %>
   <div class="column-main-content">
     <h1><%= @user.profile.first_name %>&nbsp<%= @user.profile.last_name %></h1>
     <% unless @user.profile.photo.url == "/photos/original/missing.png" %>
-    <%= image_tag @user.profile.photo.url(:medium) %>
+      <%= image_tag @user.profile.photo.url(:medium) %>
     <% else %>
       <%= gravatar_for(@user, 250) %>
     <% end %>
