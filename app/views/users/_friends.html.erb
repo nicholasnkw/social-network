@@ -8,6 +8,9 @@
         <%= link_to gravatar_for(f, 50), user_path(:id => f) %>
         <% end %>
         <%= link_to "#{f.profile.first_name} #{f.profile.last_name}", user_path(:id => f) %>
+        <p class="delete">
+          <%= link_to "X", user_friend_path(current_user, :friend_id => f.id), :method => :delete, :class => "delete",  data: {confirm: "Delete this Friendship?"} %>
+  </p>
       </div>
     <% end %>
   </aside>

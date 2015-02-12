@@ -442,6 +442,16 @@ h6 {
     .sidebar-content {
       margin: 2%;
       border-bottom: 1px solid #aeaeae;
+      position: relative;
+      .delete {
+        position: absolute;
+        top: 0;
+        right: 5px;
+        &:hover {
+          font-weight: 800;
+          color: red;
+        }
+      }
       a {
         color: #000;
         font-weight: 500;
