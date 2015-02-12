@@ -2,7 +2,7 @@
   <div id="logo"><%=link_to "Social-Network", current_user %> 
   </div>
   <% if user_signed_in? %>
-  <div class="dropdown hidden">
+  <div class="dropdown">
     <% if @pending_friends.size > 0 %>
       <%= render  "layouts/notifications" %>
     <% end %>
