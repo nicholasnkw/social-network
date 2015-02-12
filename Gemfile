@@ -19,13 +19,13 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'figaro'
-
+gem 'faker', '1.4.3'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rspec-its'
-  gem 'faker', '1.4.3'
+  
 end
 
 group :development do
