@@ -21,4 +21,5 @@ class UsersController < ApplicationController
     @friends = current_user.friends.includes(:profile)
   end
   
+  
 end
