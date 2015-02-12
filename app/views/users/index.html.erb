@@ -16,13 +16,12 @@
             <% elsif current_user.friends.include?(u) %>
               Friend
             <% else %>
-                <%= link_to "Add", user_friends_path( :user_id => current_user, :friend_id => u), :action => :create, :method => :post, :class => "btn-post-sm" %>
+            <%= link_to "ADD", user_friends_path( :user_id => current_user, :friend_id => u), :action => :create, :method => :post, :class => "btn-friend" %>
               <% end %>
           </span>
         <p class="span-1">
             <%= link_to "#{u.profile.first_name} #{u.profile.last_name}", user_path(:id => u) %>
-        </p>
-              
+        </p>       
           <% end %>
       </div>
       <% end %>

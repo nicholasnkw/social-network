@@ -198,8 +198,10 @@ textarea:focus {
   margin: 20px auto;
   text-align: center;
   border-bottom: 1px solid #cccccc;
-    text-align: center;
-  
+  position: relative;
+  img {
+    margin: 0 auto;
+  }
   a {
     text-decoration: none;
     color: #000000;
@@ -214,10 +216,19 @@ textarea:focus {
   }
   .span-2 {
     font-size: 1.50em;
-    margin-left: 5%;
+    position: absolute;
+    right: 0;
+    top: 85px;
   }
 }
-
+@media only screen and(min-width: 720px) {
+  .user-outer {
+    .span-2 {
+      top: 65px;
+      right: 2%;
+    }
+  }
+}
 
 
 
@@ -345,6 +356,26 @@ textarea:focus {
   background: #00E0FF;
   border: none;
   color: white; 
+}
+.btn-friend {
+  width: 50px;
+  height: 50px;
+  background: #cccccc;
+  display: block;
+  line-height: 50px;
+  color: #fff;
+  font-weight: 600;
+  &:hover {
+    background: #aaaaaa;
+  }
+}
+
+@media only screen and(min-width: 720px) {
+  .btn-friend {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+  }
 }
 
 
