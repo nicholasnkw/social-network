@@ -5,7 +5,10 @@
       <div class="row">
         <% if devise_mapping.omniauthable? %>
           <% resource_class.omniauth_providers.each do |provider| %> 
-            <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), :class => "btn btn-large btn-lg btn-facebook" %><br />
+            <div class="btn btn-large btn-lg btn-facebook">
+              <i class="fa fa-facebook-official fa-2x"></i>
+            <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)%>
+            </div>
           <% end %>
         <% end %>
       </div>

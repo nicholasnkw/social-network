@@ -324,6 +324,18 @@ textarea:focus {
   height: 60px;
   color: white;
   border-radius: 0;
+  line-height: 30px;
+  a {
+    color: white;
+    font-weight: 600;
+    margin-left: 5px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  i {
+     float: left;
+  }
 }
 .btn-facebook:hover {
   color: white;
@@ -375,7 +387,6 @@ textarea:focus {
   .btn-friend {
     width: 100px;
     height: 100px;
-    line-height: 100px;
   }
 }
 
