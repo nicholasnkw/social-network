@@ -1,5 +1,7 @@
 <header>
-  <div id="logo"><%=link_to "Social-Network", current_user %> 
+  <div id="logo"><%=link_to current_user do %> 
+    <i class="fa fa-home fa-2x"></i>
+    <% end %>
   </div>
   <% if user_signed_in? %>
   <div class="dropdown">
@@ -9,9 +11,16 @@
   </div>
   <nav class="nav">
     <ul>
-      <li><%= link_to( 'Users', users_path) %></li>
-      <li><%= link_to( 'Feed', posts_path) %></li>
-      <li><%= link_to('Logout', destroy_session_path(current_user), :method => :delete) %></li>
+      <li><%= link_to  users_path do %>
+        <i class="fa fa-users fa-2x"></i>
+      <% end %> </li>
+      <li><%= link_to posts_path do %>
+        <i class="fa fa-rss-square fa-2x"></i>
+        <% end %></li>
+      <li><%= render  "layouts/notifications" %></li>
+      <li><%= link_to destroy_session_path(current_user), :method => :delete  do %>
+        <i class="fa fa-sign-out fa-2x"></i>
+        <% end %></li>
     </ul>
   </nav>   
   <% end %>
