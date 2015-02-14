@@ -4,11 +4,6 @@
     <% end %>
   </div>
   <% if user_signed_in? %>
-  <div class="dropdown">
-    <% if @pending_friends.size > 0 %>
-      <%= render  "layouts/notifications" %>
-    <% end %>
-  </div>
   <nav class="nav">
     <ul>
       <li><%= link_to  users_path do %>
@@ -17,7 +12,7 @@
       <li><%= link_to posts_path do %>
         <i class="fa fa-rss-square fa-2x"></i>
         <% end %></li>
-      <li><%= render  "layouts/notifications" %></li>
+      <li><%= render "layouts/notifications", pending_friends: @pending_friends %></li>
       <li><%= link_to destroy_session_path(current_user), :method => :delete  do %>
         <i class="fa fa-sign-out fa-2x"></i>
         <% end %></li>

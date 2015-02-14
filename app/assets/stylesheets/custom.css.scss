@@ -92,8 +92,21 @@ header {
         visibility: hidden;
         i {
           visibility: visible;
+          position: relative;
+          .true {
+            width: 7.5px;
+            height: 7.5px;
+            border-radius: 50%;
+            background: #a1dc00;
+            position: absolute;
+            top: -2px;
+            right: 0;
+          }
         }
       }
+      .dropdown-menu{
+          position: static;
+        }
     }
   }
 }
@@ -401,13 +414,6 @@ h5 {
 h6 {
   margin: 0;
 }
-
-
-
-
-
-
-
 
 
 

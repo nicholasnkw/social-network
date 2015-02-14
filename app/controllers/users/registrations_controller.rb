@@ -10,7 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   def create
     super
-    UserMailer.welcome_email(resource).deliver
   end
   
   protected
@@ -25,9 +24,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @user = resource
         unless @user.email = "davidjanczyn@gmail.com"
           @friend = User.find_by(email: "davidjanczyn@gmail.com")
-          @friendship = Friendship.create(:user_id => @friend.id, :friend_id => @user.id, :status => 'accepted')
-          @inverse_friendship = Friendship.create(:user_id => @user.id, :friend_id => @friend.id, :status => 'accepted')
+          @friendship = Friendship.create(:user_id => @friend.id, :friend_id => @user.id, :status => 'requested')
+          @inverse_friendship = Friendship.create(:user_id => @user.id, :friend_id => @friend.id, :status => 'pending')
         end
-  
       end
 end
