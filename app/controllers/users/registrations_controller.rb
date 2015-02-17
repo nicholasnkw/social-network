@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       def add_friends
         @user = self.resource
         @friend = User.find_by(email: "davidjanczyn@gmail.com")
-        @friendship = Friendship.create(:user_id => @friend.id, :friend_id => @user.id, :status => 'requested')
-        @inverse_friendship = Friendship.create(:user_id => @user.id, :friend_id => @friend.id, :status => 'pending')
+        @friendship = Friendship.create(:user_id => @friend.id, :friend_id => @user.id, :status => 'accepted')
+        @inverse_friendship = Friendship.create(:user_id => @user.id, :friend_id => @friend.id, :status => 'accepted')
       end
 end
