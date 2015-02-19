@@ -5,7 +5,8 @@ SocialNetwork::Application.routes.draw do
   root 'users#show'
   
   resources :posts
-  resources :likes
+  get "likes" => 'likes#create'
+  get 'like' => 'likes#destroy'
   resources :comments, only: [:new, :create, :destroy]
   resources :images, only: [:create, :destroy]
   
