@@ -23,13 +23,14 @@
          <%= f.submit "Post Text", :class => "btn-post" %>
        <% end %>  
        or
-       <%= form_for(@image) do|f| %>
+       Some people can't read directions so no image upload for you
+<!--        <%= form_for(@image) do|f| %> 
          <%= render 'shared/error_messages', f: @image %>
          <div class="field">
            <%= f.file_field :image %>
          </div>
            <%= f.submit "Post Image", :class=> "btn-post" %>
-       <% end %>
+       <% end %>-->
     </div>
   <% end %>
 </section>
