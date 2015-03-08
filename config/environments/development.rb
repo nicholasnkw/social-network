@@ -30,5 +30,5 @@ SocialNetwork::Application.configure do
   config.assets.debug = true
   
   #Paperclip ImageMagick path
-  Paperclip.options[:command_path] = "/usr/bin/"
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

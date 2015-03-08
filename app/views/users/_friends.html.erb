@@ -3,7 +3,7 @@
     <% friends.each do |f| %>
       <div class="sidebar-content">
         <% unless f.profile.photo.url == "/photos/original/missing.png" %>
-          <%= link_to image_tag f.profile.photo.url(:thumb), user_path(:id => f) %>
+          <%= link_to image_tag f.profile.photo.url(:thumb) %>
         <% else %>
           <%= link_to gravatar_for(f, 50), user_path(:id => f) %>
         <% end %>
