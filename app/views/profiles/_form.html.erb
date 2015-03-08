@@ -11,9 +11,12 @@
     <%= p.label :blurb %>
     <%= p.text_area :blurb, :class => "form-control" %><br />
   </div>
+
   <div class="field">
+    <!--  
    <%= p.label :photo %>
     <%= p.file_field :photo %>
+-->
     <%= p.hidden_field :user_id, :value => current_user.id %>
 
     <%= p.submit %>
