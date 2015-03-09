@@ -1,17 +1,18 @@
 <div class="post-content">
   <%= p.description %>
 </div>
-<% if current_user == @user || current_user.friends.include?(@user) %>
 
   <div class="right-tools">
     <% if p.likes.count > 0 %>
       <span class="like-count"><%= pluralize(p.likes.count, "like") %></span>
     <% end %>
-    <% if current_user.likes?(p) %>
-      <%= link_to "Unlike", like_path(:id => 0, :likeable_id => p.id), :method => :delete %>
-    <% else %>
-    <%= link_to "Like", likes_path(:likeable_id => p.id, :likeable_type => "post"), action: "create", method: "Post" %>
-    <% end %>  
-    <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "post", :commentable_id => p.id) %>    
-  </div>    
-<% end %>
+    
+    <% if current_user == @user || current_user.friends.include?(@user) %>
+      <% if current_user.likes?(p) %>
+        <%= link_to "Unlike", like_path(:id => 0, :likeable_id => p.id), :method => :delete %>
+      <% else %>
+      <%= link_to "Like", likes_path(:likeable_id => p.id, :likeable_type => "post"), action: "create", method: "Post" %>
+      <% end %>  
+      <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "post", :commentable_id => p.id) %>    
+    </div>    
+  <% end %>
