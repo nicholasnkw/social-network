@@ -12,6 +12,6 @@
     <% else %>
     <%= link_to "Like", likes_path(:likeable_id => p.id, :likeable_type => "post"), action: "create", method: "Post" %>
     <% end %>  
-      <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "post", :commentable_id => p.id) %>    
+    <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "post", :commentable_id => p.id) %>    
   </div>    
 <% end %>

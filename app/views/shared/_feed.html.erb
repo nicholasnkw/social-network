@@ -47,7 +47,7 @@
           <% else %>
             <%= link_to "Like", likes_path(:likeable_id => c.id, :likeable_type => "comment"), :action => :create, :method => :post %>
           <% end %> 
-            <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "comment", :commentable_id => c.id) %>
+          <%= link_to "Comment", new_comment_path(:author_id => current_user.id, :commentable_type => "comment", :commentable_id => c.id) %>
         </div>
       </div>
     </article>
