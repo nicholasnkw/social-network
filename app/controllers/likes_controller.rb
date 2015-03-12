@@ -4,17 +4,17 @@ class LikesController < ApplicationController
   def create
     if @liked.likes.create(:liker_id => current_user.id)
       flash[:success] = "Liked!"
-      redirect_to session.delete(:return_to)
+      redirect_to :back
     else
       flash.now[:error] = "Error"
-      redirect_to session.delete(:return_to)
+      redirect_to :back
     end
   end
   
   def destroy 
     @like = Like.where(:likeable_id => params[:likeable_id]).where(:liker_id => current_user).first
     if @like.destroy
-      redirect_to session.delete(:return_to)
+      redirect_to :back
     end
   end
   

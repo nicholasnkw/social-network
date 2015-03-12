@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
       flash[:success] = "Post updated"
-      redirect_to session.delete(:return_to)
+      redirect_to current_user
     else
       flash.now[:error] = "error" 
       render edit_post_path(params[:id])
