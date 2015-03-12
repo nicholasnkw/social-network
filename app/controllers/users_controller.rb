@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # make David friends with every new user
   # after_create :add_david_to_friends
   def index
-    @users = User.includes(:profile)
+    @users = User.paginate(page: params[:page], :per_page => 5).includes(:profile)
   end
   
   def show  

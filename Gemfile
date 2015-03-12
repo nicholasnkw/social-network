@@ -20,6 +20,8 @@ gem 'omniauth-facebook'
 
 gem 'figaro'
 gem 'faker', '1.4.3'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development, :test do
   gem 'rspec-rails'

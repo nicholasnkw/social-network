@@ -2,14 +2,11 @@
   <div class="column-main">
     <h1>Users</h1>
     <% if @users %>
+    <%= will_paginate @users %>
       <% @users.each do |u| %>
         <div class="user-outer">
-          <% unless current_user == u %> 
-            <% unless u.profile.photo.url == "/photos/original/missing.png" %>
-              <%= link_to image_tag u.profile.photo.url(:regular), user_path(:id => u) %>
-             <% else %>
-              <%= link_to gravatar_for(u, 200), user_path(:id => u) %> 
-            <% end %>
+          <% unless current_user == u %>  
+             <%= link_to gravatar_for(u, 200), user_path(:id => u) %> 
           <span class="span-2">
             <% if current_user.requested_friends.include?(u) %>
               Pending
@@ -25,6 +22,7 @@
           <% end %>
       </div>
       <% end %>
+    <%= will_paginate @users %>
     <% end %>
   </div>
 </section>
